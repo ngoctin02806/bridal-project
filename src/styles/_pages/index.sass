@@ -1,0 +1,244 @@
+/////////////////////////////////
+// Phần Slider
+/////////////////////////////////
+
+.home-slider
+	.owl-carousel
+		// Phần Slider
+		.item
+			position: relative
+			.title
+				+pad(2rem 0)
+				height: 100%
+				width: 100%
+				display: flex
+				align-items: center
+			+media-breakpoint-up(md)
+				.title
+					+pos(abs, 0 null null 0)
+					color: $whites
+					+text-shadow()
+					h2
+						+fz(3rem)
+					p 
+						+fz(1.5rem)
+						+lh(2rem)
+		// Phần Control
+		.owl-dots
+			margin-bottom: 2rem
+/////////////////////////////////
+// Phần News
+/////////////////////////////////
+
+.home-news
+	.item 
+		figure
+			.blockimg
+				+bor-rad(10px)
+				overflow: hidden
+				img
+					width: 100%
+			figcaption 
+				margin-top: 1rem
+				h3 
+					+fz(1.1rem)
+					margin-bottom: 0
+				time 
+					+fz(.85rem)
+					color: darken($whites,30%)
+				p 
+					margin-top: .5rem
+					color: darken($whites,50%)
+/////////////////////////////////
+// Phần News
+/////////////////////////////////
+
+.home-clients
+	.owl-carousel
+		.item 
+			+pad(.5rem)
+		// Phần Control
+		.owl-nav
+			margin-bottom: 2rem
+			button 
+				i 
+					display: block
+					width: 2rem
+					height: 2rem
+					+lh(2rem)
+
+.home-slider-background
+	background-image: url('../../img/background-slider-1.png')
+	background-size: cover
+	z-index: -1
+	background-color: rgba(0, 0, 0, 1)
+	padding-top: 59.8px
+
+.home-slider-background .owl-dots
+	display: none
+
+.home-slider-background
+	.container
+		.row
+			.col-md-10
+				figure
+					margin-bottom: 0
+
+.home-slider-background
+	.owl-nav
+		display: flex
+		justify-content: space-between
+		position: absolute
+		margin: 0px
+		top: 50%
+		width: 100%
+
+// About Us
+// -----------------------------------------------------------
+.home-about-us-background
+	background-image: url('../img/background-about-us.png')
+	background-size: cover
+	background-attachment: fixed
+	height: auto
+	+media-breakpoint-up(lg)
+		height: 100vh
+
+.home-about-us
+	width: 100%
+	text-align: center
+	padding-top: 2rem
+	.home-about-us-title
+		font-family: "EllaFutura"
+		color: #d77c7c
+		font-size: 27px
+	img
+		+media-breakpoint-up(lg)
+			width: 19%
+		
+		+media-breakpoint-only(lg)
+			width: 25%
+
+		+media-breakpoint-down(md)
+			width: 30%
+
+.home-about-us-info
+	justify-content: space-between
+	position: relative
+	width: 100%
+	+media-breakpoint-between(md, xl)
+		margin-top: 6rem
+	
+	+media-breakpoint-only(lg)
+		margin-top: 4rem
+
+	+media-breakpoint-down(md)
+		margin-top: 2rem
+	
+	.home-about-us-item
+		width: 100%
+		height: auto
+
+	.home-about-us-responsive
+		.img
+			background-size: cover
+			height: 100%
+
+			+media-breakpoint-between(md, xl)
+				padding: 8rem 12rem
+			
+			+media-breakpoint-only(lg)
+				padding: 8rem 10rem
+			
+			+media-breakpoint-only(md)
+				padding: 7rem 7rem
+			
+			+media-breakpoint-down(sm)
+				padding: 9rem 13rem
+
+			+media-breakpoint-down(xs)
+				padding: 8rem 10rem
+				height: 100%
+
+		div
+			div
+				font-size: 1.313rem
+				color: #d77c7c
+				div
+					display: flex
+					align-items: baseline
+					p
+						margin-left: 0.3rem
+
+	.home-about-us-item-1
+		&:before
+			content: "Trâm Anh"
+			font-size: 3.25rem
+			text-align: center
+			color: #d77c7c
+			display: block
+
+		.img-1
+			background-image: url(../img/about-us-woman.png)
+			border: 2px solid #e189ec
+			border-radius: 2px
+
+	.home-about-us-item-2
+		z-index: 1
+
+		+media-breakpoint-between(md, xl)
+			position: absolute
+			top: -11%
+			left: 27%
+		
+		+media-breakpoint-only(lg)
+			position: absolute
+			top: -5%
+			left: 26%
+
+		+media-breakpoint-only(md)
+			display: none
+
+		+media-breakpoint-down(sm)
+			position: static
+			display: none
+
+		.img-2
+			background-image: url(../img/about-us.png)
+			background-size: cover
+			border: 12px solid #ffffff
+
+			+media-breakpoint-between(md, xl)
+				padding: 16rem
+				border-radius: 50%
+
+			+media-breakpoint-only(lg)
+				padding: 14rem
+				border-radius: 50%
+
+			+media-breakpoint-only(md)
+				padding: 7rem
+				border-radius: 0%
+				border: 2px solid #ffffff
+
+	.home-about-us-item-3
+		&:before
+			content: "Pew Pew"
+			font-size: 3.25rem
+			text-align: center
+			color: #d77c7c
+			display: block
+		.img-3
+			background-image: url(../img/about-us-man.png)
+			border: 2px solid #ae998d
+			border-radius: 2px
+// -----------------------------------------------------------
+// End About Us
+
+// Services
+// -----------------------------------------------------------
+
+.home-services
+	background-color: #f7f7f7
+
+// -----------------------------------------------------------
+// End Services

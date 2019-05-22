@@ -1,0 +1,23 @@
+<!-- ////////////// HEADER ////////////// -->
+header.bg-light.header-customize
+	#header-normal.container
+		nav.navbar.navbar-expand-lg.navbar-light
+			a.navbar-brand(href="#") 
+				img(src="./img/logo.png", alt="Logo")
+			//- Đây là nút sẽ hiển thị trong mobile
+			button.navbar-toggler(type="button" data-toggle="collapse" data-target="#header" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation")
+				span.fa.fa-bars
+			#header.collapse.navbar-collapse
+				//- Thuộc tính '.mr-auto' này sẽ đẩy me nu về bên phải 
+				.mr-auto
+				ul.navbar-nav.justify-content-end.header-customize-padding
+					li.nav-item.active.header-custimize-li
+						a.nav-link(href="index.html")
+							| Trang chủ
+							img(src="./img/linehome.png", alt="img1")
+					- const catalog = ['Giới thiệu', 'Dịch vụ', 'Liên hệ', 'Story love', 'Bộ sưu tập', 'Thư viện']
+						each item in catalog
+							li.nav-item
+								a.nav-link(href="#")= item
+	#header-mobile
+<!-- ////////////// HEADER ////////////// -->

@@ -1,0 +1,61 @@
+header
+	.navbar
+		+pad(null 0)
+	.navbar-brand
+		img 
+			max-height: 2.5rem
+	+media-breakpoint-up(md)
+		.navbar-brand
+			img 
+				max-height: 2.5rem
+
+.header-customize
+	box-shadow: 0px -10px 20px black
+	background-color: rgba(255, 255, 255, 0.8) !important
+	position: fixed
+	top: 0
+	width: 100%
+	z-index: 5
+
+.header-mo-btn
+	&:focus
+		outline: none
+
+.header-custimize-li
+	position: relative
+	img
+		position: absolute
+		width: 5rem
+		top: 0.9rem
+		left: 1.5rem
+
+.header-customize-padding
+	+media-breakpoint-down(md)
+		background-color: rgba(0, 0, 0, 0.5)
+	li
+		a
+			padding: 0.5rem 0.7rem !important
+			font-size: 1rem
+			color: rgb(0, 0, 0)
+			line-height: 1.2
+			font-weight: 600
+			+media-breakpoint-down(md)
+				color: rgba(255, 255, 255, 0.8) !important
+
+#header-mobile
+	+media-breakpoint-up(md)
+		display: none
+	+media-breakpoint-down(md)
+		display: block
+
+#header-normal
+	+media-breakpoint-up(md)
+		display: block
+	+media-breakpoint-down(md)
+		display: none
+
+header
+	.header-nav
+		padding-left: 0.5rem
+		padding-right: 0.5rem
+		background-color: rgba(255, 255, 255, 0.7)

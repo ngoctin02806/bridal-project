@@ -1,0 +1,94 @@
+extends _layout/layout
+
+//- Các giá trị mặc định cho trang web
+block variables
+	- var title = 'Home'
+	- var description = 'Description for home page'
+	- var bodyclass = 'home'
+
+//- Khai báo các mixin
+mixin services(Content, UrlImg)
+		.col-md-4.text-center
+			figure
+				img(src=`${UrlImg}`, alt= Content)
+			div
+				p= Content
+				.home-services-decription
+				| It is a long established fact that a reader will be distracted 
+
+//- Phần khai báo body
+block body
+	//- Bạn viết code vào đây nhớ là phải mở đầu bằng section ở mỗi khối
+	section.home-slider.home-slider-background
+		.container
+			.row.justify-content-center
+				.col-md-12
+					.owl-carousel.owl-theme
+						figure.item
+							img(src="./img/invention.png")
+							figcaption
+						figure.item
+							img(src="./img/invention.png", alt="")
+							figcaption
+						figure.item
+							img(src="./img/invention.png", alt="")
+							figcaption
+	section.home-news.home-about-us-background
+		.container
+			.row.justify-content-center
+				.home-about-us
+					h3.home-about-us-title Về chúng tôi
+					div
+						img(src="./img/flower-line.png", alt="")
+				.row.home-about-us-info
+					.col-12.col-sm-12.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-item.home-about-us-item-1
+						div
+							.img.img-1
+							div
+								div
+									i.fa.fa-star-o
+									p Hot girl Trâm Anh
+								div
+									i.fa.fa-star-o
+									p 27/04/1995
+								div
+									i.fa.fa-star-o
+									p Make-up chuyên nghiệp. Có 5 năm kinh nghiệm.
+								div
+									i.fa.fa-star-o
+									p Từng làm trong các studio lớn ở TP. Hồ Chí Minh.
+
+					.col-12.col-sm-12.col-md-6.col-lg-4.home-about-us-item.home-about-us-item-2
+						.img-2
+					.col-12.col-sm-12.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-item.home-about-us-item-3
+						div
+							.img.img-3
+							div
+								div
+									i.fa.fa-star-o
+									p Trần Đăng Khoa
+								div
+									i.fa.fa-star-o
+									p 20/05/1991
+								div
+									i.fa.fa-star-o
+									p Nhà tạo mẫu tóc với 10 năm kinh nghiệm.
+								div
+									i.fa.fa-star-o
+									p Từng là nhà tạo mẫu tóc cho các thí sinh dự thi hoa hậu ở nước Nhật và Úc.
+
+	section.home-clients.home-services
+		.container
+			.home-about-us
+				h3.home-about-us-title Dịch vụ
+				div
+					img(src="./img/flower-line.png", alt="")
+
+				.row
+					- const arrServices = ['Áo cưới', 'Trang điểm', 'Tạo mẫu tóc', 'Chụp ảnh', 'Sửa ảnh', 'Dịch vụ khác']
+					- const arrUrl = ['./img/wedding-dress.png', './img/make-up.png', './img/cut-hair.png', './img/camera.png', './img/cover-image.png', './img/differences.png']
+					each value, index in arrServices
+						if index < 3
+							+services(value, arrUrl[index])
+						else
+							+services(value, arrUrl[index])
