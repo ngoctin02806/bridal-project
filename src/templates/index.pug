@@ -39,7 +39,7 @@ block body
 				.home-about-us
 					h3.home-about-us-title Về chúng tôi
 					div
-						img(src="./img/flower-line.png", alt="")
+						img(src="./img/flower-line.png", alt="" class="home-about-us-img")
 				.row.home-about-us-info
 					.col-12.col-sm-12.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-item.home-about-us-item-1
 						div
@@ -82,9 +82,9 @@ block body
 			.home-about-us
 				h3.home-about-us-title Dịch vụ
 				div
-					img(src="./img/flower-line.png", alt="")
+					img(src="./img/flower-line.png", alt="" class="home-about-us-img")
 
-				.row
+				.row.home-services-option
 					- const arrServices = ['Áo cưới', 'Trang điểm', 'Tạo mẫu tóc', 'Chụp ảnh', 'Sửa ảnh', 'Dịch vụ khác']
 					- const arrUrl = ['./img/wedding-dress.png', './img/make-up.png', './img/cut-hair.png', './img/camera.png', './img/cover-image.png', './img/differences.png']
 					each value, index in arrServices

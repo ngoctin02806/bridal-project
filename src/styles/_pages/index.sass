@@ -95,6 +95,14 @@
 
 // About Us
 // -----------------------------------------------------------
+
+// Mixin title img
+// $value1 is the size of screen
+@mixin responsiveTitleImg($value, $percentOfWidth)
+	@media only screen and (max-width: $value)
+		width: $percentOfWidth
+	
+
 .home-about-us-background
 	background-image: url('../img/background-about-us.png')
 	background-size: cover
@@ -111,15 +119,17 @@
 		font-family: "EllaFutura"
 		color: #d77c7c
 		font-size: 27px
-	img
+	.home-about-us-img
 		+media-breakpoint-up(lg)
 			width: 19%
 		
 		+media-breakpoint-only(lg)
 			width: 25%
 
-		+media-breakpoint-down(md)
+		+media-breakpoint-only(md)
 			width: 30%
+
+		+responsiveTitleImg(767px, 40%)
 
 .home-about-us-info
 	justify-content: space-between
@@ -131,7 +141,7 @@
 	+media-breakpoint-only(lg)
 		margin-top: 4rem
 
-	+media-breakpoint-down(md)
+	+media-breakpoint-only(md)
 		margin-top: 2rem
 	
 	.home-about-us-item
@@ -168,6 +178,9 @@
 					align-items: baseline
 					p
 						margin-left: 0.3rem
+
+						+media-breakpoint-down(md)
+							margin-bottom: 0.5rem
 
 	.home-about-us-item-1
 		&:before
