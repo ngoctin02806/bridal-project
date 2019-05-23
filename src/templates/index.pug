@@ -7,14 +7,13 @@ block variables
 	- var bodyclass = 'home'
 
 //- Khai báo các mixin
-mixin services(Content, UrlImg)
-		.col-md-4.text-center
+mixin services(Content, UrlImg, index)
+		div(class=`col-12 col-sm-12 col-md-6 col-lg-4 text-center home-services-item home-services-item-${index + 1}`)
 			figure
 				img(src=`${UrlImg}`, alt= Content)
 			div
 				p= Content
-				.home-services-decription
-				| It is a long established fact that a reader will be distracted 
+				.home-services-decription It is a long established fact that a reader will be distracted by the readable content
 
 //- Phần khai báo body
 block body
@@ -36,15 +35,16 @@ block body
 	section.home-news.home-about-us-background
 		.container
 			.row.justify-content-center
-				.home-about-us
-					h3.home-about-us-title Về chúng tôi
-					div
-						img(src="./img/flower-line.png", alt="" class="home-about-us-img")
-				.row.home-about-us-info
-					.col-12.col-sm-12.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-item.home-about-us-item-1
+				.col-12
+					.home-about-us
+						h3.home-about-us-title Về chúng tôi
 						div
-							.img.img-1
-							div
+							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
+					.row.home-about-us-img
+						.col-10.col-sm-9.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-responsive-left
+							figure
+								img(src="./img/about-us-woman.png", alt="" class="home-about-us-img-item home-about-us-img-1")
+							.home-about-us-content.home-about-us-content-left
 								div
 									i.fa.fa-star-o
 									p Hot girl Trâm Anh
@@ -56,20 +56,20 @@ block body
 									p Make-up chuyên nghiệp. Có 5 năm kinh nghiệm.
 								div
 									i.fa.fa-star-o
-									p Từng làm trong các studio lớn ở TP. Hồ Chí Minh.
-
-					.col-12.col-sm-12.col-md-6.col-lg-4.home-about-us-item.home-about-us-item-2
-						.img-2
-					.col-12.col-sm-12.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-item.home-about-us-item-3
-						div
-							.img.img-3
-							div
+									p Từng làm trong các studio lớn ở TP. Hồ Chí Minh
+						.col-12.col-sm-12.col-md-6.home-about-us-responsive-middle
+							figure
+								img(src="./img/about-us.png", alt="" class="home-about-us-img-2")
+						.col-10.col-sm-9.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-responsive-right
+							figure
+								img(src="./img/about-us-man.png", alt="" class="home-about-us-img-item home-about-us-img-3")
+							.home-about-us-content.home-about-us-content-right
 								div
 									i.fa.fa-star-o
 									p Trần Đăng Khoa
 								div
 									i.fa.fa-star-o
-									p 20/05/1991
+									p 25/05/1991
 								div
 									i.fa.fa-star-o
 									p Nhà tạo mẫu tóc với 10 năm kinh nghiệm.
@@ -79,16 +79,15 @@ block body
 
 	section.home-clients.home-services
 		.container
-			.home-about-us
-				h3.home-about-us-title Dịch vụ
-				div
-					img(src="./img/flower-line.png", alt="" class="home-about-us-img")
+			.row.justify-content-center
+				.col-12
+					.home-about-us
+						h3.home-about-us-title Dịch vụ
+						div
+							img(src="./img/flower-line.png", alt="" class="home-about-us-img")
 
-				.row.home-services-option
-					- const arrServices = ['Áo cưới', 'Trang điểm', 'Tạo mẫu tóc', 'Chụp ảnh', 'Sửa ảnh', 'Dịch vụ khác']
-					- const arrUrl = ['./img/wedding-dress.png', './img/make-up.png', './img/cut-hair.png', './img/camera.png', './img/cover-image.png', './img/differences.png']
-					each value, index in arrServices
-						if index < 3
-							+services(value, arrUrl[index])
-						else
-							+services(value, arrUrl[index])
+							- const arrServices = ['Áo cưới', 'Trang điểm', 'Tạo mẫu tóc', 'Chụp ảnh', 'Sửa ảnh', 'Dịch vụ khác']
+							- const arrUrl = ['./img/wedding-dress.png', './img/make-up.png', './img/cut-hair.png', './img/camera.png', './img/cover-image.png', './img/differences.png']	
+					.row.home-services-option
+						each value, index in arrServices
+							+services(value, arrUrl[index], index)

@@ -96,154 +96,105 @@
 // About Us
 // -----------------------------------------------------------
 
-// Mixin title img
-// $value1 is the size of screen
-@mixin responsiveTitleImg($value, $percentOfWidth)
-	@media only screen and (max-width: $value)
-		width: $percentOfWidth
-	
-
 .home-about-us-background
 	background-image: url('../img/background-about-us.png')
 	background-size: cover
-	background-attachment: fixed
-	height: auto
-	+media-breakpoint-up(lg)
-		height: 100vh
 
-.home-about-us
-	width: 100%
-	text-align: center
-	padding-top: 2rem
-	.home-about-us-title
-		font-family: "EllaFutura"
-		color: #d77c7c
-		font-size: 27px
-	.home-about-us-img
-		+media-breakpoint-up(lg)
-			width: 19%
+	.home-about-us
+		text-align: center
+		margin-bottom: 5rem
+		padding-top: 2.5rem
+
+		+media-breakpoint-only(xl)
+			margin-bottom: 7rem
+
+		+media-breakpoint-down(md)
+			margin-bottom: 2.5rem
 		
-		+media-breakpoint-only(lg)
-			width: 25%
+		+media-breakpoint-down(sm)
+			margin-bottom: 2rem
 
-		+media-breakpoint-only(md)
-			width: 30%
-
-		+responsiveTitleImg(767px, 40%)
-
-.home-about-us-info
-	justify-content: space-between
-	position: relative
-	width: 100%
-	+media-breakpoint-between(md, xl)
-		margin-top: 6rem
-	
-	+media-breakpoint-only(lg)
-		margin-top: 4rem
-
-	+media-breakpoint-only(md)
-		margin-top: 2rem
-	
-	.home-about-us-item
-		width: 100%
-		height: auto
-
-	.home-about-us-responsive
-		.img
-			background-size: cover
-			height: 100%
-
-			+media-breakpoint-between(md, xl)
-				padding: 8rem 12rem
-			
+		.home-about-us-title
+			color: #d77c7c
+		
+		.home-about-us-img-title
+			+media-breakpoint-only(xl)
+				width: 19%
 			+media-breakpoint-only(lg)
-				padding: 8rem 10rem
-			
+				width: 22%
 			+media-breakpoint-only(md)
-				padding: 7rem 7rem
-			
+				width: 30%
+			+media-breakpoint-only(sm)
+				width: 40%
 			+media-breakpoint-down(sm)
-				padding: 9rem 13rem
+				width: 45%
 
-			+media-breakpoint-down(xs)
-				padding: 8rem 10rem
-				height: 100%
+	.home-about-us-img
+		position: relative
+		justify-content: space-between
+		+media-breakpoint-down(sm)
+			justify-content: center
 
-		div
-			div
-				font-size: 1.313rem
-				color: #d77c7c
+		.home-about-us-responsive
+			color: #d77c7c
+			figure
+				.home-about-us-img-item
+					width: 100%
+					border-radius: 0.2rem
+				.home-about-us-img-1
+					border: 4px solid #e189eb
+				.home-about-us-img-3
+					border: 4px solid #ae998d
+
+			.home-about-us-content
 				div
+					font-size: 1.313rem
 					display: flex
 					align-items: baseline
+					i
+						margin-right: 0.4rem
 					p
-						margin-left: 0.3rem
-
-						+media-breakpoint-down(md)
-							margin-bottom: 0.5rem
-
-	.home-about-us-item-1
-		&:before
-			content: "Trâm Anh"
-			font-size: 3.25rem
-			text-align: center
-			color: #d77c7c
-			display: block
-
-		.img-1
-			background-image: url(../img/about-us-woman.png)
-			border: 2px solid #e189ec
-			border-radius: 2px
-
-	.home-about-us-item-2
-		z-index: 1
-
-		+media-breakpoint-between(md, xl)
+						margin-bottom: 0.5rem
+				
+		.home-about-us-responsive-middle
 			position: absolute
-			top: -11%
-			left: 27%
-		
-		+media-breakpoint-only(lg)
-			position: absolute
-			top: -5%
-			left: 26%
+			top: -10.2%
+			left: 27.5%
+			z-index: 1
 
-		+media-breakpoint-only(md)
-			display: none
+			@media only screen and (min-width: 768px)
+				max-width: 45%
+			
+			@media only screen and (min-width: 768px) and (max-width: 1200px)
+				max-width: 46%
+				left: 27%
+				top: -8%
 
-		+media-breakpoint-down(sm)
-			position: static
-			display: none
+			+media-breakpoint-down(md)
+				display: none
 
-		.img-2
-			background-image: url(../img/about-us.png)
-			background-size: cover
-			border: 12px solid #ffffff
+			figure
+				.home-about-us-img-2
+					border-radius: 50%
+					width: 100%
+					border: 12px solid #ffffff
 
-			+media-breakpoint-between(md, xl)
-				padding: 16rem
-				border-radius: 50%
+		.home-about-us-responsive-left
+			figure
+				&:before
+					content: 'Trâm Anh'
+					display: block
+					text-align: center
+					font-size: 40px
 
-			+media-breakpoint-only(lg)
-				padding: 14rem
-				border-radius: 50%
+		.home-about-us-responsive-right
+			figure
+				&:before
+					content: 'Pew Pew'
+					display: block
+					text-align: center
+					font-size: 40px
 
-			+media-breakpoint-only(md)
-				padding: 7rem
-				border-radius: 0%
-				border: 2px solid #ffffff
-
-	.home-about-us-item-3
-		&:before
-			content: "Pew Pew"
-			font-size: 3.25rem
-			text-align: center
-			color: #d77c7c
-			display: block
-		.img-3
-			background-image: url(../img/about-us-man.png)
-			border: 2px solid #ae998d
-			border-radius: 2px
 // -----------------------------------------------------------
 // End About Us
 
@@ -253,5 +204,18 @@
 .home-services
 	background-color: #f7f7f7
 
+.home-services-option
+	margin-top: 4rem
+	.home-services-item
+		div
+			color: rgb(127, 120, 120)
+			margin-bottom: 3rem
+
+			p
+				font-size: 2.375rem
+			
+			.home-services-decription
+				font-size: 1.563rem
+				line-height: 1.2
 // -----------------------------------------------------------
 // End Services
