@@ -11,3 +11,33 @@ html, body
 	font-size: 14.5px
 	height: 100%
 	width: 100%
+
+// Extend
+.home-title-total
+	text-align: center
+	margin-bottom: 9rem
+	padding-top: 2.5rem
+
+	+media-breakpoint-only(xl)
+		margin-bottom: 10rem
+
+	+media-breakpoint-down(md)
+		margin-bottom: 5rem
+			
+	+media-breakpoint-down(sm)
+		margin-bottom: 6rem
+
+	.home-about-us-title
+		color: #d77c7c
+			
+	.home-about-us-img-title
+		+media-breakpoint-only(xl)
+			width: 19%
+		+media-breakpoint-only(lg)
+			width: 22%
+		+media-breakpoint-only(md)
+			width: 30%
+		+media-breakpoint-only(sm)
+			width: 40%
+		+media-breakpoint-down(sm)
+			width: 45%

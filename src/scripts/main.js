@@ -53,10 +53,6 @@ $(document).ready(function () {
 		custimizeInfoPartOfAboutUs(widthResize,check);
 		check = false;
 	}
-	$(window).resize(function() {
-		widthResize = $(window).width();
-		check = custimizeInfoPartOfAboutUs(widthResize,check);
-	});
 });
 
 function custimizeInfoPartOfAboutUs(widthResize, check) {
