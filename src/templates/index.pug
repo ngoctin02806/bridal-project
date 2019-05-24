@@ -35,7 +35,7 @@ block body
 	section.home-news.home-about-us-background
 		.container
 			.row.justify-content-center
-				.col-12
+				.col-12#content-height
 					.home-about-us
 						h3.home-about-us-title Về chúng tôi
 						div
@@ -43,15 +43,15 @@ block body
 					.row.home-about-us-img
 						.col-10.col-sm-6.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-responsive-left
 							figure(attr-name="Trâm Anh")
-								img(src="./img/about-us-woman.png", alt="" class="home-about-us-img-item home-about-us-img-1")
+								img(src="./img/about-us-woman.png", alt="" class="home-about-us-img-item home-about-us-img-1" id="content-1")
 						.col-12.col-sm-12.col-md-6.home-about-us-responsive-middle
 							figure
 								img(src="./img/about-us.png", alt="" class="home-about-us-img-2")
 						.col-10.col-sm-6.col-md-6.col-lg-4.home-about-us-responsive.home-about-us-responsive-right
-							figure(attr-name="Pew Pew")
+							figure(attr-name="Pew Pew" id="content-2")
 								img(src="./img/about-us-man.png", alt="" class="home-about-us-img-item home-about-us-img-3")
-					.row
-						.home-about-us-content.home-about-us-content-left
+					.row.home-us-total
+						.col-10.col-sm-5.col-md-5.col-lg-4.home-about-us-content.home-about-us-content-left#content-info-1
 								div
 									i.fa.fa-star-o
 									p Hot girl Trâm Anh
@@ -67,7 +67,8 @@ block body
 								div
 									i.fa.fa-star-o
 									p Làm việc studio lớn ở HCM
-						.home-about-us-content.home-about-us-content-right
+						.col-sm-1.col-md-1.col-lg-4
+						.col-10.col-sm-5.col-md-5.col-lg-4.home-about-us-content.home-about-us-content-right#content-info-2
 								div
 									i.fa.fa-star-o
 									p Trần Đăng Khoa
@@ -83,7 +84,6 @@ block body
 								div
 									i.fa.fa-star-o
 									p Từng tác nghiệp ở Úc, Nhật.
-
 	section.home-clients.home-services
 		.container
 			.row.justify-content-center

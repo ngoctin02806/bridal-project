@@ -46,5 +46,11 @@ $(document).ready(function () {
 	var divElement = $('<div id="header-mo" class="collapse navbar-collapse"></div>') // Create a div element
 	$('#header-mobile').append(nav).append(divElement); // Append nav and div element in #header-mobile element
 	divElement.html(listItem); // Insert html of list into div element
-});
 
+	var content1 = $('#content-info-1');
+	var content2 = $('#content-info-2');
+	var widthResize = $(window).width();
+	$(window).resize(function() {
+		widthResize = $(window).width();
+	});
+});

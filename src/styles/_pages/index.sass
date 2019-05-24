@@ -153,18 +153,15 @@
 				figure
 					.home-about-us-img-item
 						border: 8px solid $white
-
 			.home-about-us-content
+				position: absolute
 				div
-					font-size: 1.313rem
-					+media-breakpoint-down(md)
-						font-size: 1rem
 					display: flex
 					align-items: baseline
+					font-size: 1.313rem
+					color: #d77c7c
 					i
-						margin-right: 0.4rem
-					p
-						margin-bottom: 0.5rem
+						margin-right: 0.5rem
 				
 		.home-about-us-responsive-middle
 			position: absolute
@@ -172,6 +169,12 @@
 			left: 50%
 			z-index: 1
 			transform: translateX(-50%) translateY(-50%)
+
+			@media only screen and (min-width: 768px)
+				max-width: 45%
+
+			@media only screen and (min-width: 768px) and (max-width: 1200px)
+				max-width: 46%
 
 			+media-breakpoint-down(md)
 				display: none
@@ -209,7 +212,17 @@
 					bottom: 100%
 					+media-breakpoint-down(md)
 						font-size: 30px
-
+	.home-us-total
+		.home-about-us-content
+			div
+				font-size: 1.313rem
+				display: flex
+				align-items: baseline
+				color: #d77c7c
+				+media-breakpoint-down(md)
+					font-size: 1rem
+				i
+					margin-right: 0.5rem
 // -----------------------------------------------------------
 // End About Us
 
