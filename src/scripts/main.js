@@ -47,10 +47,37 @@ $(document).ready(function () {
 	$('#header-mobile').append(nav).append(divElement); // Append nav and div element in #header-mobile element
 	divElement.html(listItem); // Insert html of list into div element
 
-	var content1 = $('#content-info-1');
-	var content2 = $('#content-info-2');
+	var check = true;
 	var widthResize = $(window).width();
+	if (widthResize <= 576) {
+		custimizeInfoPartOfAboutUs(widthResize,check);
+		check = false;
+	}
 	$(window).resize(function() {
 		widthResize = $(window).width();
+		check = custimizeInfoPartOfAboutUs(widthResize,check);
 	});
 });
+
+function custimizeInfoPartOfAboutUs(widthResize, check) {
+	if (check) {
+		var content1 = $('#content-info-1').html();
+		var content2 = $('#content-info-2').html();
+		var newContent1 = '<div class="content-info-alter" id="content-info-id-1">' + content1 + '</div>';
+		var newContent2 = '<div class="content-info-alter" id="content-info-id-2">' + content2 + '</div>';
+		if (widthResize <= 576) {
+			$('#content-1').append(newContent1);
+			$('#content-2').append(newContent2);
+			var divTotal = $('#home-us-total-id');
+			divTotal.css('display', 'none');
+			check = false;
+		}
+	}
+	else {
+		$('#content-info-id-1').remove();
+		$('#content-info-id-2').remove();
+		$('#home-us-total-id').css('display', 'flex');
+		check = true;
+	}
+	return check;
+}

@@ -104,17 +104,17 @@
 
 	.home-about-us
 		text-align: center
-		margin-bottom: 5rem
+		margin-bottom: 9rem
 		padding-top: 2.5rem
 
 		+media-breakpoint-only(xl)
-			margin-bottom: 7rem
+			margin-bottom: 10rem
 
 		+media-breakpoint-down(md)
-			margin-bottom: 2.5rem
+			margin-bottom: 5rem
 		
 		+media-breakpoint-down(sm)
-			margin-bottom: 2rem
+			margin-bottom: 6rem
 
 		.home-about-us-title
 			color: #d77c7c
@@ -139,6 +139,16 @@
 
 		.home-about-us-responsive
 			color: #d77c7c
+			+media-breakpoint-down(xs)
+				margin-bottom: 1.5rem
+
+			.content-info-alter
+				div
+					display: flex
+					align-items: baseline
+					i
+						margin-right: 0.5rem
+
 			figure
 				.home-about-us-img-item
 					width: 100%
