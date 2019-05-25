@@ -47,6 +47,8 @@ $(document).ready(function () {
 	$('#header-mobile').append(nav).append(divElement); // Append nav and div element in #header-mobile element
 	divElement.html(listItem); // Insert html of list into div element
 
+	// Testing pull request
+
 	var check = true;
 	var widthResize = $(window).width();
 	if (widthResize <= 576) {
