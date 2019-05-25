@@ -225,19 +225,32 @@
 	background-color: #f7f7f7
 	.home-services-title
 		@extend .home-title-total
-
-.home-services-option
-	margin-top: 4rem
-	.home-services-item
-		div
-			color: rgb(127, 120, 120)
+		+media-breakpoint-up(lg)
+			margin-bottom: 3rem
+		+media-breakpoint-down(md)
 			margin-bottom: 3rem
 
-			p
-				font-size: 2.375rem
-			
-			.home-services-decription
-				font-size: 1.563rem
-				line-height: 1.2
+	.home-services-option
+		+media-breakpoint-down(sm)
+			justify-content: center
+		.home-services-item
+			figure
+				position: relative
+				margin-bottom: 0.6rem
+				img
+					width: 5rem
+					height: 5rem
+			div
+				color: rgb(127, 120, 120)
+				margin-bottom: 2rem
+
+				p
+					font-size: 2rem
+
+				.home-services-decription
+					font-size: 1.4rem
+					line-height: 1.4
+					+media-breakpoint-down(md)
+						font-size: 1.2rem
 // -----------------------------------------------------------
 // End Services

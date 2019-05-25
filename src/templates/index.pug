@@ -8,7 +8,7 @@ block variables
 
 //- Khai báo các mixin
 mixin services(Content, UrlImg, index)
-		div(class=`col-12 col-sm-12 col-md-6 col-lg-4 text-center home-services-item home-services-item-${index + 1}`)
+		div(class=`col-9 col-sm-12 col-md-6 col-lg-4 text-center home-services-item home-services-item-${index + 1}`)
 			figure
 				img(src=`${UrlImg}`, alt= Content)
 			div
@@ -92,9 +92,8 @@ block body
 						h3.home-about-us-title Dịch vụ
 						div
 							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
-
-							- const arrServices = ['Áo cưới', 'Trang điểm', 'Tạo mẫu tóc', 'Chụp ảnh', 'Sửa ảnh', 'Dịch vụ khác']
-							- const arrUrl = ['./img/wedding-dress.png', './img/make-up.png', './img/cut-hair.png', './img/camera.png', './img/cover-image.png', './img/differences.png']	
+					- const arrServices = ['Áo cưới', 'Trang điểm', 'Tạo mẫu tóc', 'Chụp ảnh', 'Sửa ảnh', 'Dịch vụ khác']
+					- const arrUrl = ['./img/bride-dress.png', './img/make-up.png', './img/cut-hair.png', './img/camera.png', './img/cover-image.png', './img/wedding-rings.png']	
 					.row.home-services-option
 						each value, index in arrServices
 							+services(value, arrUrl[index], index)
