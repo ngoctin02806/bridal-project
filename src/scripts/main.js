@@ -55,7 +55,6 @@ $(document).ready(function () {
 	}
 });
 
-//Test pull request
 function custimizeInfoPartOfAboutUs(widthResize, check) {
 	if (check) {
 		var content1 = $('#content-info-1').html();
