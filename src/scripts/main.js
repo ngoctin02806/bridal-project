@@ -47,8 +47,6 @@ $(document).ready(function () {
 	$('#header-mobile').append(nav).append(divElement); // Append nav and div element in #header-mobile element
 	divElement.html(listItem); // Insert html of list into div element
 
-	// Testing pull request
-
 	var check = true;
 	var widthResize = $(window).width();
 	if (widthResize <= 576) {
@@ -57,6 +55,7 @@ $(document).ready(function () {
 	}
 });
 
+//Test pull request
 function custimizeInfoPartOfAboutUs(widthResize, check) {
 	if (check) {
 		var content1 = $('#content-info-1').html();
