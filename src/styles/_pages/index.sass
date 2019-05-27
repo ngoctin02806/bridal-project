@@ -263,11 +263,53 @@
 	background-size: cover
 	.home-demo-dress-title
 		@extend .home-title-total
+		+media-breakpoint-up(md)
+			margin-bottom: 3rem
+		+media-breakpoint-down(md)
+			margin-bottom: 2rem
 	.home-demo-dress-option
 		text-align: center
-		color: $white
+		justify-content: center
+		color: $black-opacity
+		font-size: 1.3rem
+		margin-bottom: 2rem
 		.home-demo-dress-item
-			background-color: #d77c7c
+			border: 3px solid $pink-opacity
+			padding: 0.6rem 1rem
+			cursor: pointer
+			+media-breakpoint-down(sm)
+				padding: 0.5rem 0.8rem
 
+			margin: 0rem 1rem
+
+			@media only screen and (min-width: 1200px)
+				max-width: 9.66667%
+
+			@media only screen and (max-width: 1200px) and (min-width: 992px)
+				max-width: 12.66667%
+
+			@media only screen and (max-width: 767.98px) and (min-width: 576px)
+				max-width: 29.33333%
+		.home-demo-dress-item-1
+			+media-breakpoint-down(sm)
+				margin-right: 0.5rem
+				margin-bottom: 0.5rem
+		.home-demo-dress-item-2
+			+media-breakpoint-down(sm)
+				margin-left: 0.5rem
+				margin-bottom: 0.5rem
+		.home-demo-dress-item-3
+			+media-breakpoint-down(sm)
+				margin-right: 0.5rem
+		.home-demo-dress-item-4
+			+media-breakpoint-down(sm)
+				margin-left: 0.5rem
+
+.collapse-demo-dress
+	.row
+		figure
+			img
+				width: 100%
+				object-fit: cover
 // -----------------------------------------------------------
 // End Demo dress

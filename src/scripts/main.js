@@ -53,6 +53,21 @@ $(document).ready(function () {
 		custimizeInfoPartOfAboutUs(widthResize,check);
 		check = false;
 	}
+
+	// Resize
+	resizeImage();
+	$(window).resize(function() {
+		resizeImage();
+	});
+	// for(var i = 0; i < arrListImg.length; i++) {
+	//  Example: Call DOM for element again,
+	//	This is img element.
+	// Syntax: $(element)
+	// 	$(arrListImg[i]).css('height',heigthImg )
+	// }
+
+	// Collapse
+	
 });
 
 function custimizeInfoPartOfAboutUs(widthResize, check) {
@@ -76,4 +91,43 @@ function custimizeInfoPartOfAboutUs(widthResize, check) {
 		check = true;
 	}
 	return check;
+}
+
+//Resize Image
+function resizeImage() {
+	var arrListImg = $('.home-demo-dress-item-img figure img');
+	var offsetWidthOfDiv = arrListImg[0].offsetWidth;
+	var heigthImg = offsetWidthOfDiv * 3/2;
+	$('.home-demo-dress-item-img figure img').css('height', heigthImg);
+}
+
+// Add click event
+function onClickOptional(e) {
+	$(e).addClass('actived');
+}
+
+// Remove class actived
+function removeClass(arrElement) {
+	arrElement.foreach((node) => {
+		if ($(node).hasClass('actived')) {
+			$(node).removeClass('actived');
+			return node;
+		}
+	});
+}
+
+//addEventListener for button
+function addEventForButton() {
+	var arrButton = $('.home-demo-dress-item');
+	arrButton.foreach((node) => {
+		node.addEventListener('click', function(e) {
+			$(node).on('show.bs.collapse', function(e) {
+				if (!($(e).attr('class').hasClass('actived'))) {
+					var nodePrev = removeClass(arrButton);
+					$(nodePrev).collapse('hide');
+					onClickOptional(e);
+				}
+			});
+		});
+	});
 }

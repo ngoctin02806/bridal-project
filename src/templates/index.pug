@@ -15,6 +15,12 @@ mixin services(Content, UrlImg, index)
 				p= Content
 				.home-services-decription It is a long established fact that a reader will be distracted by the readable content
 
+mixin demoWeddingDress(jsonList)
+	each value in jsonList
+		.col-5.col-sm-6.col-md-4.col-lg-2.home-demo-dress-item-img
+			figure
+				img(src=`${value}`, alt='bride')
+
 //- Phần khai báo body
 block body
 	//- Bạn viết code vào đây nhớ là phải mở đầu bằng section ở mỗi khối
@@ -105,3 +111,17 @@ block body
 						h3.home-about-us-title Áo cưới
 						div
 							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
+					.row.home-demo-dress-option.justify-content-center
+						.col-4.col-sm-4.col-md-2.col-lg-2.home-demo-dress-item.home-demo-dress-item-1.actived#home-demo-dress-id-1 Váy cưới
+						.col-4.col-sm-4.col-md-2.col-lg-2.home-demo-dress-item.home-demo-dress-item-2 Vest nam
+						.col-4.col-sm-4.col-md-2.col-lg-2.home-demo-dress-item.home-demo-dress-item-3 Bê tráp
+						.col-4.col-sm-4.col-md-2.col-lg-2.home-demo-dress-item.home-demo-dress-item-4 Khác
+					.row
+						.col
+							.collapse-demo-dress-collapse-1.collapse.show
+								- const jsonList = [ 'https://daminhtan.com/images/Longka/Wedding/ROSA/mau-vay-cuoi-xuong-may-vay-cuoi-o-ha-noi-TRUN5289.jpg','http://static.giaoducthoidai.vn/uploaded/namnn/2015_12_04/14492164771449215078anh1_tpga.jpg?width=500','https://aphoto.vn/wp-content/uploads/2017/07/Chia-s%E1%BA%BB-stock-%E1%BA%A3nh-c%C3%B4-d%C3%A2u-%C4%91%C6%A1n-ch%E1%BB%A5p-ngo%E1%BA%A1i-c%E1%BA%A3nh-4.jpg', 'https://i.a4vn.com/2019/1/5/hau-trang-mat-a-hau-thanh-tu-khoe-bo-anh-co-dau-dep-mo-mang-821f0d.jpg','http://palatinostudio.com/editor/fileman/Uploads/tintuc/chup-anh-co-dau-don-than-palatino-studio-14.jpg','http://designlife.vn/wp-content/uploads/2015/09/tao-dang-co-dau-don-than.jpg','http://chupanhcuoidepsaigon.com/wp-content/uploads/2017/11/chup-hinh-cuoi-phim-truong-jeju-ngoai-canh-sai-gon-anh-cuoi-dep-luciola-thiet-ke-vay-cuoi-luciola-viet-nam1-729x1024.jpg','https://icdn.dantri.com.vn/thumb_w/640/2018/9/24/nha-phuong-1-15377850815281116830194.jpg','http://media.depplus.vn/images/site-1/20171125/web/ho-ngoc-ha-tung-anh-co-dau-xinh-dep-trong-ngay-sinh-nhat-236-141452.jpg','https://kenh14cdn.com/2017/do-long-3-1503115309477.jpg','http://team-image.com/wp-content/uploads/2017/12/bo-anh-co-dau-dep-team-image-thuc-hien-tai-tphcm-2-1.jpg','http://hajime.vn/pictures/chon-vay-cuoi-theo-cung-hoang-dao4.jpg' ]
+								.row.justify-content-center
+									+demoWeddingDress(jsonList)
+							//- .collapse-demo-dress-collapse-2.collapse
+							//- 	.row.justify-content-center
+							//- 		+demoWeddingDress(jsonList)
