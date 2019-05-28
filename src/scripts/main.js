@@ -56,9 +56,9 @@ $(document).ready(function () {
 
 	// Resize
 	resizeImage();
-	$(window).resize(function() {
-		resizeImage();
-	});
+	// $(window).resize(function() {
+	// 	resizeImage();
+	// });
 	// for(var i = 0; i < arrListImg.length; i++) {
 	//  Example: Call DOM for element again,
 	//	This is img element.
@@ -67,7 +67,10 @@ $(document).ready(function () {
 	// }
 
 	// Collapse
-	
+	addEventForButton();
+	// $('#home-demo-dress-id-1').click(function() {
+	// 	$('.collapse-demo-dress').collapse('hide');
+	// });
 });
 
 function custimizeInfoPartOfAboutUs(widthResize, check) {
@@ -108,10 +111,21 @@ function onClickOptional(e) {
 
 // Remove class actived
 function removeClass(arrElement) {
-	arrElement.foreach((node) => {
+	let pos = 0;
+	arrElement.each((index, node) => {
 		if ($(node).hasClass('actived')) {
 			$(node).removeClass('actived');
-			return node;
+			pos = index;
+		}
+	});
+	return pos;
+}
+
+// Check class actived
+function checkClassActived(arrBtn) {
+	arrBtn.each(function(index, node) {
+		if ($(node).hasClass('actived')) {
+			return index;
 		}
 	});
 }
@@ -119,15 +133,19 @@ function removeClass(arrElement) {
 //addEventListener for button
 function addEventForButton() {
 	var arrButton = $('.home-demo-dress-item');
-	arrButton.foreach((node) => {
-		node.addEventListener('click', function(e) {
-			$(node).on('show.bs.collapse', function(e) {
-				if (!($(e).attr('class').hasClass('actived'))) {
-					var nodePrev = removeClass(arrButton);
-					$(nodePrev).collapse('hide');
-					onClickOptional(e);
-				}
-			});
+	arrButton.each((index, node) => {
+		let selectorStr = '#collapse-demo-dress-id-' + (index + 1);
+		let event;
+		$(node).on('click', function(e) {
+			event = e;
+			$(selectorStr).collapse('show');
+		});
+		$(selectorStr).on('show.bs.collapse', function() {
+			let pos = removeClass(arrButton);
+			if (!($(event.target).hasClass('actived'))) {
+				$('#collapse-demo-dress-id-' + (pos + 1)).collapse('hide');
+				onClickOptional(event.target);
+			}
 		});
 	});
 }
