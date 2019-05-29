@@ -79,39 +79,272 @@ $(document).ready(function () {
 	resizeImage('.home-library-img-item a figure img', 1);
 
 	// Photoswipe
-	openPhotoSwipe();
+	clickShown();
 });
 
-function openPhotoSwipe() {
+// Photoswipe
+function openPhotoSwipe(indexValue) {
 	var pswpElement = document.querySelectorAll('.pswp')[0];
 
 	// build items array
 	var items = [
+
+		// Slide 1
 		{
-			src: 'https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg',
-			w: 964,
-			h: 1024
+			mediumImage: {
+				src: './img/couple-1.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-1.png',
+				w: 592,
+				h: 428
+			}
+		},
+
+		{
+			mediumImage: {
+				src: './img/couple-2.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-2.png',
+				w: 592,
+				h: 428
+			}
 		},
 		{
-			src: 'https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg',
-			w: 1024,
-			h: 683
-		}
+			mediumImage: {
+				src: './img/couple-3.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-3.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-4.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-4.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-5.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-5.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-6.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-6.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-1.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-1.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-2.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-2.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-3.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-3.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-4.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-4.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-5.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-5.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-6.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-6.png',
+				w: 592,
+				h: 428
+			}
+		},
 	];
 	
 	// define options (if needed)
 	var options = {
-			// history & focus options are disabled on CodePen        
+		index: indexValue,
+		getThumbBoundsFn: function(index) {
+
+			// find thumbnail element
+			var thumbnail = document.querySelectorAll('.home-library-img-item a figure img')[index];
+		
+			// get window scroll Y
+			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop; 
+			// optionally get horizontal scroll
+		
+			// get position of element relative to viewport
+			var rect = thumbnail.getBoundingClientRect(); 
+		
+			// w = width
+			return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+		
+		
+			// Good guide on how to get element coordinates:
+			// http://javascript.info/tutorial/coordinates
+		},
 		history: false,
 		focus: false,
-
 		showAnimationDuration: 0,
 		hideAnimationDuration: 0
 		
 	};
 	
+	// initialise as usual
 	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+
+	// create variable that will store real size of viewport
+	var realViewportWidth,
+		useLargeImages = false,
+		firstResize = true,
+		imageSrcWillChange;
+
+	// beforeResize event fires each time size of gallery viewport updates
+	gallery.listen('beforeResize', function() {
+		// gallery.viewportSize.x - width of PhotoSwipe viewport
+		// gallery.viewportSize.y - height of PhotoSwipe viewport
+		// window.devicePixelRatio - ratio between physical pixels and device independent pixels (Number)
+		//                          1 (regular display), 2 (@2x, retina) ...
+
+
+		// calculate real pixels when size changes
+		realViewportWidth = gallery.viewportSize.x * window.devicePixelRatio;
+
+		// Code below is needed if you want image to switch dynamically on window.resize
+
+		// Find out if current images need to be changed
+		if(useLargeImages && realViewportWidth < 1000) {
+			useLargeImages = false;
+			imageSrcWillChange = true;
+		} else if(!useLargeImages && realViewportWidth >= 1000) {
+			useLargeImages = true;
+			imageSrcWillChange = true;
+		}
+
+		// Invalidate items only when source is changed and when it's not the first update
+		if(imageSrcWillChange && !firstResize) {
+			// invalidateCurrItems sets a flag on slides that are in DOM,
+			// which will force update of content (image) on window.resize.
+			gallery.invalidateCurrItems();
+		}
+
+		if(firstResize) {
+			firstResize = false;
+		}
+
+		imageSrcWillChange = false;
+
+	});
+
+
+	// gettingData event fires each time PhotoSwipe retrieves image source & size
+	gallery.listen('gettingData', function(index, item) {
+
+		// Set image source & size based on real viewport width
+		if( useLargeImages ) {
+			item.src = item.originalImage.src;
+			item.w = item.originalImage.w;
+			item.h = item.originalImage.h;
+		} else {
+			item.src = item.mediumImage.src;
+			item.w = item.mediumImage.w;
+			item.h = item.mediumImage.h;
+		}
+
+		// It doesn't really matter what will you do here, 
+		// as long as item.src, item.w and item.h have valid values.
+		// 
+		// Just avoid http requests in this listener, as it fires quite often
+
+	});
+
+
+	// Note that init() method is called after gettingData event is bound
 	gallery.init();
+}
+
+function clickShown() {
+	$('.home-library-img-item').on('click', function() {
+		let clicked = $(this);
+		let index = clicked.attr('data-target');
+		openPhotoSwipe(parseInt(index));
+	});
 }
 
 function custimizeInfoPartOfAboutUs(widthResize, check) {

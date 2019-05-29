@@ -22,9 +22,9 @@ mixin demoWeddingDress(jsonList)
 				img(src=`${value}`, alt='bride')
 
 mixin showImgLibrary(arrImg)
-	each value in arrImg
-		.col-4.col-sm-4.col-md-4.col-lg-2.home-library-img-item
-			a(href="")
+	each value, index in arrImg
+		.col-4.col-sm-4.col-md-4.col-lg-2.home-library-img-item(data-target=`${index}`)
+			a.home-library-shown
 				figure
 					img(src=`${value}`, alt="library")
 					.home-library-hover
