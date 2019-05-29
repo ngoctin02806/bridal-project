@@ -93,6 +93,16 @@
 		top: 50%
 		width: 100%
 		transform: translateY(-50%)
+		.owl-prev
+			&:hover
+				background: none
+			&:focus
+				outline: none
+		.owl-next
+			&:hover
+				background: none
+			&:focus
+				outline: none
 
 // About Us
 // -----------------------------------------------------------
@@ -141,15 +151,6 @@
 				figure
 					.home-about-us-img-item
 						border: 8px solid $white
-			.home-about-us-content
-				position: absolute
-				div
-					display: flex
-					align-items: baseline
-					font-size: 1.313rem
-					color: #d77c7c
-					i
-						margin-right: 0.5rem
 				
 		.home-about-us-responsive-middle
 			position: absolute
@@ -211,6 +212,9 @@
 					font-size: 1rem
 				i
 					margin-right: 0.5rem
+				p
+					+media-breakpoint-down(md)
+						margin-bottom: 0.5rem
 // -----------------------------------------------------------
 // End About Us
 
@@ -221,19 +225,168 @@
 	background-color: #f7f7f7
 	.home-services-title
 		@extend .home-title-total
-
-.home-services-option
-	margin-top: 4rem
-	.home-services-item
-		div
-			color: rgb(127, 120, 120)
+		+media-breakpoint-up(lg)
+			margin-bottom: 3rem
+		+media-breakpoint-down(md)
 			margin-bottom: 3rem
 
-			p
-				font-size: 2.375rem
-			
-			.home-services-decription
-				font-size: 1.563rem
-				line-height: 1.2
+	.home-services-option
+		+media-breakpoint-down(sm)
+			justify-content: center
+		.home-services-item
+			figure
+				position: relative
+				margin-bottom: 0.6rem
+				img
+					width: 5rem
+					height: 5rem
+			div
+				color: rgb(127, 120, 120)
+				margin-bottom: 2rem
+
+				p
+					font-size: 2rem
+
+				.home-services-decription
+					font-size: 1.4rem
+					line-height: 1.4
+					+media-breakpoint-down(md)
+						font-size: 1.2rem
 // -----------------------------------------------------------
 // End Services
+
+// Demo dress
+// -----------------------------------------------------------
+
+.home-demo-dress
+	background-image: url(../img/background-demo-dress.png)
+	background-size: cover
+	.home-demo-dress-title
+		@extend .home-title-total
+		+media-breakpoint-up(md)
+			margin-bottom: 3rem
+		+media-breakpoint-down(md)
+			margin-bottom: 2rem
+	.home-demo-dress-option
+		text-align: center
+		justify-content: center
+		color: $black-opacity
+		font-size: 1.3rem
+		margin-bottom: 2rem
+		.home-demo-dress-item
+			border: 3px solid $pink-opacity
+			padding: 0.6rem 1rem
+			cursor: pointer
+			+media-breakpoint-down(sm)
+				padding: 0.5rem 0.8rem
+
+			margin: 0rem 1rem
+
+			@media only screen and (min-width: 1200px)
+				max-width: 9.66667%
+
+			@media only screen and (max-width: 1200px) and (min-width: 992px)
+				max-width: 12.66667%
+
+			@media only screen and (max-width: 767.98px) and (min-width: 576px)
+				max-width: 29.33333%
+		.home-demo-dress-item-1
+			+media-breakpoint-down(sm)
+				margin-right: 0.5rem
+				margin-bottom: 0.5rem
+		.home-demo-dress-item-2
+			+media-breakpoint-down(sm)
+				margin-left: 0.5rem
+				margin-bottom: 0.5rem
+		.home-demo-dress-item-3
+			+media-breakpoint-down(sm)
+				margin-right: 0.5rem
+		.home-demo-dress-item-4
+			+media-breakpoint-down(sm)
+				margin-left: 0.5rem
+
+.collapse-demo-dress
+	figure
+		img
+			width: 100%
+			object-fit: cover
+
+#see-more
+	text-align: center
+	padding: 2rem 0rem 3rem
+	a
+		border: $pink-opacity solid 2px
+		color: $pink-opacity
+		padding: 0.5rem 2rem
+		font-size: 1.5rem
+		border-radius: 5px
+		box-shadow: 2px 3px 7px #c6c6c6
+		outline: none
+		text-decoration: none
+		&:hover
+			background-color: $pink-opacity
+			color: $white
+		&:active
+			background-color: #b36868
+			border: #b36868 solid 2px
+// -----------------------------------------------------------
+// End Demo dress
+
+
+// Library
+// -----------------------------------------------------------
+
+.home-library
+	background-color: #fffefd
+	.home-library-title
+		@extend .home-title-total
+		+media-breakpoint-up(md)
+			margin-bottom: 3rem
+		+media-breakpoint-down(md)
+			margin-bottom: 2rem
+		.home-about-us-img-title
+			+media-breakpoint-only(xl)
+				width: 14.2%
+			+media-breakpoint-only(lg)
+				width: 19.35%
+			+media-breakpoint-only(md)
+				width: 22.28%
+			+media-breakpoint-down(sm)
+				width: 37.3%
+	.row
+		.home-library-img-item
+			padding: 0rem 0rem
+			cursor: pointer
+			figure
+				margin-bottom: 0rem
+				position: relative
+				img
+					width: 100%
+					object-fit: cover
+					border: 1px solid $white
+				.home-library-hover
+					position: absolute
+					width: 100%
+					height: 100%
+					top: 0px
+					left: 0px
+					z-index: 1
+					text-align: center
+					display: flex
+					justify-content: center
+					align-items: center
+					div
+						background-image: url('../img/magnifying-glass.png')
+						background-repeat: no-repeat
+						height: 32px
+						width: 32px
+						display: none
+						text-align: center
+					&:hover
+						background-color: rgba(40, 38, 36, 0.41)
+						div
+							display: block
+
+
+// -----------------------------------------------------------
+// End Library

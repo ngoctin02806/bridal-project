@@ -8,12 +8,54 @@ block variables
 
 //- Khai báo các mixin
 mixin services(Content, UrlImg, index)
-		div(class=`col-12 col-sm-12 col-md-6 col-lg-4 text-center home-services-item home-services-item-${index + 1}`)
+		div(class=`col-9 col-sm-12 col-md-6 col-lg-4 text-center home-services-item home-services-item-${index + 1}`)
 			figure
 				img(src=`${UrlImg}`, alt= Content)
 			div
 				p= Content
 				.home-services-decription It is a long established fact that a reader will be distracted by the readable content
+
+mixin demoWeddingDress(jsonList)
+	each value in jsonList
+		.col-5.col-sm-6.col-md-4.col-lg-2.home-demo-dress-item-img
+			figure
+				img(src=`${value}`, alt='bride')
+
+mixin showImgLibrary(arrImg)
+	each value, index in arrImg
+		.col-4.col-sm-4.col-md-4.col-lg-2.home-library-img-item(data-target=`${index}`)
+			a.home-library-shown
+				figure
+					img(src=`${value}`, alt="library")
+					.home-library-hover
+						div
+
+mixin photoswipe()
+	.pswp(tabindex='-1', role='dialog', aria-hidden='true')
+		.pswp__bg
+		.pswp__scroll-wrap
+			.pswp__container
+				.pswp__item
+				.pswp__item
+				.pswp__item
+			.pswp__ui.pswp__ui--hidden
+				.pswp__top-bar
+					.pswp__counter
+					button.pswp__button.pswp__button--close(title='Close (Esc)')
+					button.pswp__button.pswp__button--share(title='Share')
+					button.pswp__button.pswp__button--fs(title='Toggle fullscreen')
+					button.pswp__button.pswp__button--zoom(title='Zoom in/out')
+					.pswp__preloader
+						.pswp__preloader__icn
+							.pswp__preloader__cut
+								.pswp__preloader__donut
+				.pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
+					.pswp__share-tooltip
+				button.pswp__button.pswp__button--arrow--left(title='Previous (arrow left)')
+				button.pswp__button.pswp__button--arrow--right(title='Next (arrow right)')
+				.pswp__caption
+					.pswp__caption__center
+
 
 //- Phần khai báo body
 block body
@@ -32,6 +74,7 @@ block body
 						figure.item
 							img(src="./img/invention.png", alt="")
 							figcaption
+	// Về chúng tôi
 	section.home-news.home-about-us-background
 		.container
 			.row.justify-content-center
@@ -84,6 +127,7 @@ block body
 								div
 									i.fa.fa-star-o
 									p Từng tác nghiệp ở Úc, Nhật.
+	// Dịch vụ
 	section.home-clients.home-services-background
 		.container
 			.row.justify-content-center
@@ -92,9 +136,53 @@ block body
 						h3.home-about-us-title Dịch vụ
 						div
 							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
-
-							- const arrServices = ['Áo cưới', 'Trang điểm', 'Tạo mẫu tóc', 'Chụp ảnh', 'Sửa ảnh', 'Dịch vụ khác']
-							- const arrUrl = ['./img/wedding-dress.png', './img/make-up.png', './img/cut-hair.png', './img/camera.png', './img/cover-image.png', './img/differences.png']	
+					- const arrServices = ['Áo cưới', 'Trang điểm', 'Tạo mẫu tóc', 'Chụp ảnh', 'Sửa ảnh', 'Dịch vụ khác']
+					- const arrUrl = ['./img/bride-dress.png', './img/make-up.png', './img/cut-hair.png', './img/camera.png', './img/cover-image.png', './img/wedding-rings.png']	
 					.row.home-services-option
 						each value, index in arrServices
 							+services(value, arrUrl[index], index)
+	// Váy cưới
+	section.home-demo-dress
+		.container
+			.row.justify-content-center
+				.col-12
+					.home-demo-dress-title
+						h3.home-about-us-title Áo cưới
+						div
+							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
+					.row.home-demo-dress-option.justify-content-center
+						.col-4.col-sm-4.col-md-2.col-lg-2.home-demo-dress-item.home-demo-dress-item-1.actived#home-demo-dress-id-1(data-taget="#collapse-demo-dress-id-1") Váy cưới
+						.col-4.col-sm-4.col-md-2.col-lg-2.home-demo-dress-item.home-demo-dress-item-2(data-taget="#collapse-demo-dress-id-2") Vest nam
+						.col-4.col-sm-4.col-md-2.col-lg-2.home-demo-dress-item.home-demo-dress-item-3(data-taget="#collapse-demo-dress-id-3") Bê tráp
+						.col-4.col-sm-4.col-md-2.col-lg-2.home-demo-dress-item.home-demo-dress-item-4(data-taget="#collapse-demo-dress-id-4") Khác
+					.row
+						.col
+							#collapse-demo-dress-id-1.collapse-demo-dress.collapse.show
+								- const jsonList = [ 'https://daminhtan.com/images/Longka/Wedding/ROSA/mau-vay-cuoi-xuong-may-vay-cuoi-o-ha-noi-TRUN5289.jpg','http://static.giaoducthoidai.vn/uploaded/namnn/2015_12_04/14492164771449215078anh1_tpga.jpg?width=500','https://aphoto.vn/wp-content/uploads/2017/07/Chia-s%E1%BA%BB-stock-%E1%BA%A3nh-c%C3%B4-d%C3%A2u-%C4%91%C6%A1n-ch%E1%BB%A5p-ngo%E1%BA%A1i-c%E1%BA%A3nh-4.jpg', 'https://i.a4vn.com/2019/1/5/hau-trang-mat-a-hau-thanh-tu-khoe-bo-anh-co-dau-dep-mo-mang-821f0d.jpg','http://palatinostudio.com/editor/fileman/Uploads/tintuc/chup-anh-co-dau-don-than-palatino-studio-14.jpg','http://designlife.vn/wp-content/uploads/2015/09/tao-dang-co-dau-don-than.jpg','http://chupanhcuoidepsaigon.com/wp-content/uploads/2017/11/chup-hinh-cuoi-phim-truong-jeju-ngoai-canh-sai-gon-anh-cuoi-dep-luciola-thiet-ke-vay-cuoi-luciola-viet-nam1-729x1024.jpg','https://icdn.dantri.com.vn/thumb_w/640/2018/9/24/nha-phuong-1-15377850815281116830194.jpg','http://media.depplus.vn/images/site-1/20171125/web/ho-ngoc-ha-tung-anh-co-dau-xinh-dep-trong-ngay-sinh-nhat-236-141452.jpg','https://kenh14cdn.com/2017/do-long-3-1503115309477.jpg','http://team-image.com/wp-content/uploads/2017/12/bo-anh-co-dau-dep-team-image-thuc-hien-tai-tphcm-2-1.jpg','http://hajime.vn/pictures/chon-vay-cuoi-theo-cung-hoang-dao4.jpg' ]
+								- const vestList = [ 'http://maiveston.com/wp-content/uploads/2018/06/maiveston.com-vest-nam-suit-004-dai-dien.jpg', 'https://bizweb.dktcdn.net/thumb/grande/100/023/876/files/vest-cuoi-dep-2.jpg?v=1475899219343', 'https://mayphuongthao.com/wp-content/uploads/2017/01/dong-phuc-vest-nam-0072.jpg', 'http://maiveston.com/wp-content/uploads/2018/06/maiveston.com-vest-nam-suit-004-dai-dien.jpg', 'http://www.vnmall.vn/Uploads/18/ThumbImages/700_22102016081032_0_ao-vest-nam-facioshop-zp05.jpg', 'https://media-cdn.tripadvisor.com/media/photo-s/0e/55/6a/b4/may-vest-d-p-ha-n-i.jpg', 'https://www.nazafu.com/images/thumbs/2018/03/ao-vest-den-1107-62-slide-products-5abdf7655c402.jpg', 'https://www.nazafu.com/images/thumbs/2018/03/ao-vest-xam-chuot-1103-61-slide-products-5abdf6fc5001c.jpg', 'https://product.hstatic.net/1000199383/product/bo-suit-nam-aristino-asu009w7_large.jpg', 'https://cdn.bigc24h.com/wp-content/uploads/sites/241/2019/01/sp_6.jpg', 'https://media.yoox.biz/items/49/49365770pj_14_f.jpg', 'https://media3.scdn.vn/img1/2016/8_13/ao-khoac-gia-vest-nam-slim-fit-co-dien-1m4G3-XhxxR4_simg_d0daf0_800x1200_max.jpg' ]
+								.row.justify-content-center
+									+demoWeddingDress(jsonList)
+							#collapse-demo-dress-id-2.collapse-demo-dress.collapse
+								.row.justify-content-center
+									+demoWeddingDress(vestList)
+							#collapse-demo-dress-id-3.collapse-demo-dress.collapse
+								.row.justify-content-center
+									+demoWeddingDress(jsonList)
+							#collapse-demo-dress-id-4.collapse-demo-dress.collapse
+								.row.justify-content-center
+									+demoWeddingDress(jsonList)
+					#see-more 
+						a(href="./item1.html") Xem thêm
+	// Thư viện
+	section.home-library
+		.container-fluid
+			.row.justify-content-center
+				.col-12
+					.home-library-title
+						h3.home-about-us-title Thư viện
+						div
+							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
+					.row
+						- const arrImg = ['./img/couple-1.png', './img/couple-2.png','./img/couple-3.png','./img/couple-4.png','./img/couple-5.png','./img/couple-6.png','./img/couple-1.png','./img/couple-2.png','./img/couple-3.png','./img/couple-4.png','./img/couple-5.png','./img/couple-6.png']
+						+showImgLibrary(arrImg)
+	+photoswipe()

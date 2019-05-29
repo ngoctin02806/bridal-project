@@ -55,9 +55,300 @@ $(document).ready(function () {
 		custimizeInfoPartOfAboutUs(widthResize,check);
 		check = false;
 	}
+
+	// Resize image of Wedding dress
+	resizeImage('.home-demo-dress-item-img figure img', 1.5);
+	// $(window).resize(function() {
+	// 	resizeImage();
+	// });
+	// for(var i = 0; i < arrListImg.length; i++) {
+	//  Example: Call DOM for element again,
+	//	This is img element.
+	// Syntax: $(element)
+	// 	$(arrListImg[i]).css('height',heigthImg )
+	// }
+
+	// Collapse
+	addEventForButton();
+	// $('#home-demo-dress-id-1').click(function() {
+	// 	$('.collapse-demo-dress').collapse('hide');
+	// });
+
+	// Show image
+	showImageDevices();
+
+	// Resize image of Library
+	resizeImage('.home-library-img-item a figure img', 1);
+
+	// Photoswipe
+	clickShown();
 });
 
-//Test pull request
+// Photoswipe
+function openPhotoSwipe(indexValue) {
+	var pswpElement = document.querySelectorAll('.pswp')[0];
+
+	// build items array
+	var items = [
+
+		// Slide 1
+		{
+			mediumImage: {
+				src: './img/couple-1.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-1.png',
+				w: 592,
+				h: 428
+			}
+		},
+
+		{
+			mediumImage: {
+				src: './img/couple-2.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-2.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-3.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-3.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-4.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-4.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-5.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-5.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-6.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-6.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-1.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-1.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-2.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-2.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-3.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-3.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-4.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-4.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-5.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-5.png',
+				w: 592,
+				h: 428
+			}
+		},
+		{
+			mediumImage: {
+				src: './img/couple-6.png',
+				w:800,
+				h:600
+			},
+			originalImage: {
+				src: './img/couple-6.png',
+				w: 592,
+				h: 428
+			}
+		},
+	];
+	
+	// define options (if needed)
+	var options = {
+		index: indexValue,
+		getThumbBoundsFn: function(index) {
+
+			// find thumbnail element
+			var thumbnail = document.querySelectorAll('.home-library-img-item a figure img')[index];
+		
+			// get window scroll Y
+			var pageYScroll = window.pageYOffset || document.documentElement.scrollTop; 
+			// optionally get horizontal scroll
+		
+			// get position of element relative to viewport
+			var rect = thumbnail.getBoundingClientRect(); 
+		
+			// w = width
+			return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+		
+		
+			// Good guide on how to get element coordinates:
+			// http://javascript.info/tutorial/coordinates
+		},
+		history: false,
+		focus: false,
+		showAnimationDuration: 0,
+		hideAnimationDuration: 0
+		
+	};
+	
+	// initialise as usual
+	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+
+	// create variable that will store real size of viewport
+	var realViewportWidth,
+		useLargeImages = false,
+		firstResize = true,
+		imageSrcWillChange;
+
+	// beforeResize event fires each time size of gallery viewport updates
+	gallery.listen('beforeResize', function() {
+		// gallery.viewportSize.x - width of PhotoSwipe viewport
+		// gallery.viewportSize.y - height of PhotoSwipe viewport
+		// window.devicePixelRatio - ratio between physical pixels and device independent pixels (Number)
+		//                          1 (regular display), 2 (@2x, retina) ...
+
+
+		// calculate real pixels when size changes
+		realViewportWidth = gallery.viewportSize.x * window.devicePixelRatio;
+
+		// Code below is needed if you want image to switch dynamically on window.resize
+
+		// Find out if current images need to be changed
+		if(useLargeImages && realViewportWidth < 1000) {
+			useLargeImages = false;
+			imageSrcWillChange = true;
+		} else if(!useLargeImages && realViewportWidth >= 1000) {
+			useLargeImages = true;
+			imageSrcWillChange = true;
+		}
+
+		// Invalidate items only when source is changed and when it's not the first update
+		if(imageSrcWillChange && !firstResize) {
+			// invalidateCurrItems sets a flag on slides that are in DOM,
+			// which will force update of content (image) on window.resize.
+			gallery.invalidateCurrItems();
+		}
+
+		if(firstResize) {
+			firstResize = false;
+		}
+
+		imageSrcWillChange = false;
+
+	});
+
+
+	// gettingData event fires each time PhotoSwipe retrieves image source & size
+	gallery.listen('gettingData', function(index, item) {
+
+		// Set image source & size based on real viewport width
+		if( useLargeImages ) {
+			item.src = item.originalImage.src;
+			item.w = item.originalImage.w;
+			item.h = item.originalImage.h;
+		} else {
+			item.src = item.mediumImage.src;
+			item.w = item.mediumImage.w;
+			item.h = item.mediumImage.h;
+		}
+
+		// It doesn't really matter what will you do here, 
+		// as long as item.src, item.w and item.h have valid values.
+		// 
+		// Just avoid http requests in this listener, as it fires quite often
+
+	});
+
+
+	// Note that init() method is called after gettingData event is bound
+	gallery.init();
+}
+
+function clickShown() {
+	$('.home-library-img-item').on('click', function() {
+		let clicked = $(this);
+		let index = clicked.attr('data-target');
+		openPhotoSwipe(parseInt(index));
+	});
+}
+
 function custimizeInfoPartOfAboutUs(widthResize, check) {
 	if (check) {
 		var content1 = $('#content-info-1').html();
@@ -79,4 +370,98 @@ function custimizeInfoPartOfAboutUs(widthResize, check) {
 		check = true;
 	}
 	return check;
+}
+
+//Resize Image
+function resizeImage(selectorImg, offset) {
+	var arrListImg = $(selectorImg);
+	var offsetWidthOfDiv = arrListImg[0].offsetWidth;
+	var heigthImg = offsetWidthOfDiv * offset;
+	$(selectorImg).css('height', heigthImg);
+}
+
+// Add click event
+function onClickOptional(e) {
+	$(e).addClass('actived');
+}
+
+// Remove class actived
+function removeClass(arrElement) {
+	let pos = 0;
+	arrElement.each((index, node) => {
+		if ($(node).hasClass('actived')) {
+			$(node).removeClass('actived');
+			pos = index;
+		}
+	});
+	return pos;
+}
+
+// Check class actived
+function checkClassActived(arrBtn) {
+	arrBtn.each(function(index, node) {
+		if ($(node).hasClass('actived')) {
+			return index;
+		}
+	});
+}
+
+// addEventListener for button
+function addEventForButton() {
+	let arrUrl = ['./item1.html', './item2.html', './item3.html', './item4.html'];
+	let arrButton = $('.home-demo-dress-item');
+	arrButton.each((index, node) => {
+		let selectorStr = '#collapse-demo-dress-id-' + (index + 1);
+		let event;
+		$(node).on('click', function(e) {
+			event = e;
+			$(selectorStr).collapse('show');
+		});
+		$(selectorStr).on('show.bs.collapse', function() {
+			let pos = removeClass(arrButton);
+			if (!($(event.target).hasClass('actived'))) {
+				$('#collapse-demo-dress-id-' + (pos + 1)).collapse('hide');
+				onClickOptional(event.target);
+				$('#see-more').children().attr('href', arrUrl[index]);
+			}
+		});
+	});
+}
+
+// Show image on the devieces
+function showImageDevices() {
+	let arrListImage = $('.home-demo-dress-item-img');
+	let shownImg1 = [];
+	let shownImg2 = [];
+	let shownImg3 = [];
+	let shownImg4 = [];
+	if ($(window).width() >= 768 && $(window).width() <= 991.98) {
+		arrListImage.css('display', 'none');
+		for(let i = 0; i < 6; i++) {
+			shownImg1.push(arrListImage[i]);
+			shownImg2.push(arrListImage[i + 12]);
+			shownImg3.push(arrListImage[i + 24]);
+			shownImg4.push(arrListImage[i + 36]);
+		}
+
+		shownImg1 = shownImg1.concat(shownImg2, shownImg3, shownImg4);
+
+		for(let i = 0; i < shownImg1.length; i++) {
+			$(shownImg1).css('display', 'block');
+		}
+	} else if ($(window).width() <= 767.98) {
+		arrListImage.css('display', 'none');
+		for(let i = 0; i < 4; i++) {
+			shownImg1.push(arrListImage[i]);
+			shownImg2.push(arrListImage[i + 12]);
+			shownImg3.push(arrListImage[i + 24]);
+			shownImg4.push(arrListImage[i + 36]);
+		}
+		
+		shownImg1 = shownImg1.concat(shownImg2, shownImg3, shownImg4);
+
+		for(let i = 0; i < shownImg1.length; i++) {
+			$(shownImg1).css('display', 'block');
+		}
+	}
 }
