@@ -310,5 +310,78 @@
 		img
 			width: 100%
 			object-fit: cover
+
+#see-more
+	text-align: center
+	padding: 2rem 0rem 3rem
+	a
+		border: $pink-opacity solid 2px
+		color: $pink-opacity
+		padding: 0.5rem 2rem
+		font-size: 1.5rem
+		border-radius: 5px
+		box-shadow: 2px 3px 7px #c6c6c6
+		outline: none
+		text-decoration: none
+		&:hover
+			background-color: $pink-opacity
+			color: $white
+		&:active
+			background-color: #b36868
+			border: #b36868 solid 2px
 // -----------------------------------------------------------
 // End Demo dress
+
+
+// Library
+// -----------------------------------------------------------
+
+.home-library
+	background-color: #fffefd
+	.home-library-title
+		@extend .home-title-total
+		.home-about-us-img-title
+			+media-breakpoint-only(xl)
+				width: 14.2%
+			+media-breakpoint-only(lg)
+				width: 19.35%
+			+media-breakpoint-only(md)
+				width: 22.28%
+			+media-breakpoint-down(sm)
+				width: 37.3%
+	.row
+		.home-library-img-item
+			padding: 0rem 0rem
+			figure
+				margin-bottom: 0rem
+				position: relative
+				img
+					width: 100%
+					object-fit: cover
+					border: 1px solid $white
+				.home-library-hover
+					position: absolute
+					width: 100%
+					height: 100%
+					top: 0px
+					left: 0px
+					z-index: 1
+					text-align: center
+					display: flex
+					justify-content: center
+					align-items: center
+					div
+						background-image: url('../img/magnifying-glass.png')
+						background-repeat: no-repeat
+						height: 32px
+						width: 32px
+						display: none
+						text-align: center
+					&:hover
+						background-color: rgba(40, 38, 36, 0.41)
+						div
+							display: block
+
+
+// -----------------------------------------------------------
+// End Library

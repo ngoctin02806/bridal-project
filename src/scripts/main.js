@@ -54,8 +54,8 @@ $(document).ready(function () {
 		check = false;
 	}
 
-	// Resize
-	resizeImage();
+	// Resize image of Wedding dress
+	resizeImage('.home-demo-dress-item-img figure img', 1.5);
 	// $(window).resize(function() {
 	// 	resizeImage();
 	// });
@@ -71,7 +71,48 @@ $(document).ready(function () {
 	// $('#home-demo-dress-id-1').click(function() {
 	// 	$('.collapse-demo-dress').collapse('hide');
 	// });
+
+	// Show image
+	showImageDevices();
+
+	// Resize image of Library
+	resizeImage('.home-library-img-item a figure img', 1);
+
+	// Photoswipe
+	openPhotoSwipe();
 });
+
+function openPhotoSwipe() {
+	var pswpElement = document.querySelectorAll('.pswp')[0];
+
+	// build items array
+	var items = [
+		{
+			src: 'https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg',
+			w: 964,
+			h: 1024
+		},
+		{
+			src: 'https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg',
+			w: 1024,
+			h: 683
+		}
+	];
+	
+	// define options (if needed)
+	var options = {
+			// history & focus options are disabled on CodePen        
+		history: false,
+		focus: false,
+
+		showAnimationDuration: 0,
+		hideAnimationDuration: 0
+		
+	};
+	
+	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+	gallery.init();
+}
 
 function custimizeInfoPartOfAboutUs(widthResize, check) {
 	if (check) {
@@ -97,11 +138,11 @@ function custimizeInfoPartOfAboutUs(widthResize, check) {
 }
 
 //Resize Image
-function resizeImage() {
-	var arrListImg = $('.home-demo-dress-item-img figure img');
+function resizeImage(selectorImg, offset) {
+	var arrListImg = $(selectorImg);
 	var offsetWidthOfDiv = arrListImg[0].offsetWidth;
-	var heigthImg = offsetWidthOfDiv * 3/2;
-	$('.home-demo-dress-item-img figure img').css('height', heigthImg);
+	var heigthImg = offsetWidthOfDiv * offset;
+	$(selectorImg).css('height', heigthImg);
 }
 
 // Add click event
@@ -130,9 +171,10 @@ function checkClassActived(arrBtn) {
 	});
 }
 
-//addEventListener for button
+// addEventListener for button
 function addEventForButton() {
-	var arrButton = $('.home-demo-dress-item');
+	let arrUrl = ['./item1.html', './item2.html', './item3.html', './item4.html'];
+	let arrButton = $('.home-demo-dress-item');
 	arrButton.each((index, node) => {
 		let selectorStr = '#collapse-demo-dress-id-' + (index + 1);
 		let event;
@@ -145,7 +187,46 @@ function addEventForButton() {
 			if (!($(event.target).hasClass('actived'))) {
 				$('#collapse-demo-dress-id-' + (pos + 1)).collapse('hide');
 				onClickOptional(event.target);
+				$('#see-more').children().attr('href', arrUrl[index]);
 			}
 		});
 	});
+}
+
+// Show image on the devieces
+function showImageDevices() {
+	let arrListImage = $('.home-demo-dress-item-img');
+	let shownImg1 = [];
+	let shownImg2 = [];
+	let shownImg3 = [];
+	let shownImg4 = [];
+	if ($(window).width() >= 768 && $(window).width() <= 991.98) {
+		arrListImage.css('display', 'none');
+		for(let i = 0; i < 6; i++) {
+			shownImg1.push(arrListImage[i]);
+			shownImg2.push(arrListImage[i + 12]);
+			shownImg3.push(arrListImage[i + 24]);
+			shownImg4.push(arrListImage[i + 36]);
+		}
+
+		shownImg1 = shownImg1.concat(shownImg2, shownImg3, shownImg4);
+
+		for(let i = 0; i < shownImg1.length; i++) {
+			$(shownImg1).css('display', 'block');
+		}
+	} else if ($(window).width() <= 767.98) {
+		arrListImage.css('display', 'none');
+		for(let i = 0; i < 4; i++) {
+			shownImg1.push(arrListImage[i]);
+			shownImg2.push(arrListImage[i + 12]);
+			shownImg3.push(arrListImage[i + 24]);
+			shownImg4.push(arrListImage[i + 36]);
+		}
+		
+		shownImg1 = shownImg1.concat(shownImg2, shownImg3, shownImg4);
+
+		for(let i = 0; i < shownImg1.length; i++) {
+			$(shownImg1).css('display', 'block');
+		}
+	}
 }

@@ -21,6 +21,42 @@ mixin demoWeddingDress(jsonList)
 			figure
 				img(src=`${value}`, alt='bride')
 
+mixin showImgLibrary(arrImg)
+	each value in arrImg
+		.col-4.col-sm-4.col-md-4.col-lg-2.home-library-img-item
+			a(href="")
+				figure
+					img(src=`${value}`, alt="library")
+					.home-library-hover
+						div
+
+mixin photoswipe()
+	.pswp(tabindex='-1', role='dialog', aria-hidden='true')
+		.pswp__bg
+		.pswp__scroll-wrap
+			.pswp__container
+				.pswp__item
+				.pswp__item
+				.pswp__item
+			.pswp__ui.pswp__ui--hidden
+				.pswp__top-bar
+					.pswp__counter
+					button.pswp__button.pswp__button--close(title='Close (Esc)')
+					button.pswp__button.pswp__button--share(title='Share')
+					button.pswp__button.pswp__button--fs(title='Toggle fullscreen')
+					button.pswp__button.pswp__button--zoom(title='Zoom in/out')
+					.pswp__preloader
+						.pswp__preloader__icn
+							.pswp__preloader__cut
+								.pswp__preloader__donut
+				.pswp__share-modal.pswp__share-modal--hidden.pswp__single-tap
+					.pswp__share-tooltip
+				button.pswp__button.pswp__button--arrow--left(title='Previous (arrow left)')
+				button.pswp__button.pswp__button--arrow--right(title='Next (arrow right)')
+				.pswp__caption
+					.pswp__caption__center
+
+
 //- Phần khai báo body
 block body
 	//- Bạn viết code vào đây nhớ là phải mở đầu bằng section ở mỗi khối
@@ -38,6 +74,7 @@ block body
 						figure.item
 							img(src="./img/invention.png", alt="")
 							figcaption
+	// Về chúng tôi
 	section.home-news.home-about-us-background
 		.container
 			.row.justify-content-center
@@ -90,6 +127,7 @@ block body
 								div
 									i.fa.fa-star-o
 									p Từng tác nghiệp ở Úc, Nhật.
+	// Dịch vụ
 	section.home-clients.home-services-background
 		.container
 			.row.justify-content-center
@@ -103,6 +141,7 @@ block body
 					.row.home-services-option
 						each value, index in arrServices
 							+services(value, arrUrl[index], index)
+	// Váy cưới
 	section.home-demo-dress
 		.container
 			.row.justify-content-center
@@ -132,3 +171,18 @@ block body
 							#collapse-demo-dress-id-4.collapse-demo-dress.collapse
 								.row.justify-content-center
 									+demoWeddingDress(jsonList)
+					#see-more 
+						a(href="./item1.html") Xem thêm
+	// Thư viện
+	section.home-library
+		.container-fluid
+			.row.justify-content-center
+				.col-12
+					.home-library-title
+						h3.home-about-us-title Thư viện
+						div
+							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
+					.row
+						- const arrImg = ['./img/couple-1.png', './img/couple-2.png','./img/couple-3.png','./img/couple-4.png','./img/couple-5.png','./img/couple-6.png','./img/couple-1.png','./img/couple-2.png','./img/couple-3.png','./img/couple-4.png','./img/couple-5.png','./img/couple-6.png']
+						+showImgLibrary(arrImg)
+	+photoswipe()
