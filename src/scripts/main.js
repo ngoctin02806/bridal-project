@@ -82,164 +82,70 @@ $(document).ready(function () {
 	clickShown();
 });
 
+// Get url of image item
+function getUrlThumbnail(arrItem) {
+	let items = [];
+	for(let i = 0; i < arrItem.length; i++) {
+		let imgObj = {
+			src: $(arrItem[i]).attr('src'),
+			w: arrItem[i].naturalWidth,
+			h: arrItem[i].naturalHeight
+		};
+		items.push(imgObj);
+	}
+	return items;
+}
+
+
 // Photoswipe
-function openPhotoSwipe(indexValue) {
+function openPhotoSwipe(index, disableAnimation, fromURL) {
 	var pswpElement = document.querySelectorAll('.pswp')[0];
 
 	// build items array
-	var items = [
-
-		// Slide 1
-		{
-			mediumImage: {
-				src: './img/couple-1.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-1.png',
-				w: 592,
-				h: 428
-			}
-		},
-
-		{
-			mediumImage: {
-				src: './img/couple-2.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-2.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-3.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-3.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-4.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-4.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-5.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-5.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-6.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-6.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-1.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-1.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-2.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-2.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-3.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-3.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-4.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-4.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-5.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-5.png',
-				w: 592,
-				h: 428
-			}
-		},
-		{
-			mediumImage: {
-				src: './img/couple-6.png',
-				w:800,
-				h:600
-			},
-			originalImage: {
-				src: './img/couple-6.png',
-				w: 592,
-				h: 428
-			}
-		},
-	];
+	var items = [...getUrlThumbnail($('.home-library-img-item a figure img'))];
 	
 	// define options (if needed)
 	var options = {
-		index: indexValue,
+		index: index,
+		bgOpacity: 0.9,
+		indexIndicatorSep: ' - ',
+		shareButtons: [
+			{id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u=url'},
+			{id:'twitter', label:'Tweet', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
+			{id:'pinterest', label:'Pin it', url:'http://www.pinterest.com/pin/create/button/?url={{url}}&media={{image_url}}&description={{text}}'},
+			{id:'download', label:'Download image', url:'{{raw_image_url}}', download:true}
+		],
+		showHideOpacity: true,
+		pinchToClose: true,
+		errorMsg: '<div class="pswp__error-msg"><a href="%url%" target="_blank">The image</a> could not be loaded.</div>',
+		getDoubleTapZoom: function(isMouseClick, item) {
+
+			// isMouseClick          - true if mouse, false if double-tap
+			// item                  - slide object that is zoomed, usually current
+			// item.initialZoomLevel - initial scale ratio of image
+			//                         e.g. if viewport is 700px and image is 1400px,
+			//                              initialZoomLevel will be 0.5
+		
+			if(isMouseClick) {
+		
+				// is mouse click on image or zoom icon
+		
+				// zoom to original
+				return 1.5;
+		
+				// e.g. for 1400px image:
+				// 0.5 - zooms to 700px
+				// 2   - zooms to 2800px
+		
+			} else {
+		
+				// is double-tap
+		
+				// zoom to original if initial zoom is less than 0.7x,
+				// otherwise to 1.5x, to make sure that double-tap gesture always zooms image
+				return item.initialZoomLevel < 0.7 ? 1 : 1.5;
+			}
+		},
 		getThumbBoundsFn: function(index) {
 
 			// find thumbnail element
@@ -261,11 +167,11 @@ function openPhotoSwipe(indexValue) {
 		},
 		history: false,
 		focus: false,
-		showAnimationDuration: 0,
-		hideAnimationDuration: 0
+		showAnimationDuration: 333,
+		hideAnimationDuration: 300
 		
 	};
-	
+
 	// initialise as usual
 	var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
 
@@ -297,10 +203,7 @@ function openPhotoSwipe(indexValue) {
 			imageSrcWillChange = true;
 		}
 
-		// Invalidate items only when source is changed and when it's not the first update
 		if(imageSrcWillChange && !firstResize) {
-			// invalidateCurrItems sets a flag on slides that are in DOM,
-			// which will force update of content (image) on window.resize.
 			gallery.invalidateCurrItems();
 		}
 
@@ -313,28 +216,6 @@ function openPhotoSwipe(indexValue) {
 	});
 
 
-	// gettingData event fires each time PhotoSwipe retrieves image source & size
-	gallery.listen('gettingData', function(index, item) {
-
-		// Set image source & size based on real viewport width
-		if( useLargeImages ) {
-			item.src = item.originalImage.src;
-			item.w = item.originalImage.w;
-			item.h = item.originalImage.h;
-		} else {
-			item.src = item.mediumImage.src;
-			item.w = item.mediumImage.w;
-			item.h = item.mediumImage.h;
-		}
-
-		// It doesn't really matter what will you do here, 
-		// as long as item.src, item.w and item.h have valid values.
-		// 
-		// Just avoid http requests in this listener, as it fires quite often
-
-	});
-
-
 	// Note that init() method is called after gettingData event is bound
 	gallery.init();
 }
@@ -343,7 +224,7 @@ function clickShown() {
 	$('.home-library-img-item').on('click', function() {
 		let clicked = $(this);
 		let index = clicked.attr('data-target');
-		openPhotoSwipe(parseInt(index));
+		openPhotoSwipe(parseInt(index), true, true);
 	});
 }
 
