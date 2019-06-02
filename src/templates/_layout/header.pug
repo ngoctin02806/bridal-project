@@ -15,9 +15,9 @@ header.bg-light.header-customize
 						a.nav-link(href="index.html")
 							| Trang chủ
 							img(src="./img/linehome.png", alt="img1")
-					- const catalog = ['Giới thiệu', 'Dịch vụ', 'Liên hệ', 'Story love', 'Bộ sưu tập', 'Thư viện']
-						each item in catalog
-							li.nav-item
+					- const catalog = ['Giới thiệu', 'Dịch vụ', 'Bộ sưu tập', 'Thư viện', 'Story love', 'Liên hệ']
+						each item, index in catalog
+							li.nav-item.catalog-item(data-target=`#catalog-section-${index + 1}`)
 								a.nav-link(href="#")= item
 	#header-mobile
 <!-- ////////////// HEADER ////////////// -->

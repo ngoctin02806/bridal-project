@@ -104,6 +104,17 @@
 			&:focus
 				outline: none
 
+// Back to top
+.back-to-top
+	position: fixed
+	bottom: 2rem
+	right: 2rem
+	z-index: 2
+	cursor: pointer
+	+media-breakpoint-down(sm)
+		right: 1rem
+		bottom: 1rem
+
 // About Us
 // -----------------------------------------------------------
 
@@ -261,6 +272,7 @@
 .home-demo-dress
 	background-image: url(../img/background-demo-dress.png)
 	background-size: cover
+	background-attachment: fixed
 	.home-demo-dress-title
 		@extend .home-title-total
 		+media-breakpoint-up(md)
@@ -311,7 +323,7 @@
 			width: 100%
 			object-fit: cover
 
-#see-more
+.home-demo-dress-more
 	text-align: center
 	padding: 2rem 0rem 3rem
 	a
@@ -336,6 +348,10 @@
 // Library
 // -----------------------------------------------------------
 
+.home-library-img
+	@media only screen and (min-width: 1400px)
+		max-width: 1400px
+
 .home-library
 	background-color: #fffefd
 	.home-library-title
@@ -346,7 +362,7 @@
 			margin-bottom: 2rem
 		.home-about-us-img-title
 			+media-breakpoint-only(xl)
-				width: 14.2%
+				width: 14.162%
 			+media-breakpoint-only(lg)
 				width: 19.35%
 			+media-breakpoint-only(md)
@@ -354,6 +370,7 @@
 			+media-breakpoint-down(sm)
 				width: 37.3%
 	.row
+		margin-bottom: 1rem
 		.home-library-img-item
 			padding: 0rem 0rem
 			cursor: pointer
@@ -390,3 +407,102 @@
 
 // -----------------------------------------------------------
 // End Library
+
+// Love story
+// -----------------------------------------------------------
+
+.home-love-story
+	background-image: url(../img/background-demo-dress.png)
+	background-size: cover
+	background-attachment: fixed
+	+media-breakpoint-up(lg)
+		height: 100vh
+	.home-love-story-title
+		@extend .home-title-total
+		+media-breakpoint-up(md)
+			margin-bottom: 3rem
+		+media-breakpoint-down(md)
+			margin-bottom: 2rem
+	.row
+		.home-story-blog
+			+media-breakpoint-down(sm)
+				margin-bottom: 1.5rem
+			a
+				text-decoration: none
+				figure
+					img
+						width: 100%
+						object-fit: cover
+						border: 4px solid #f7bfe5
+				h4
+					color: $blacks
+				.home-story-content
+					color: #969696
+					font-size: 1.2rem
+				p
+					color: #969696
+					margin-bottom: 0rem
+					margin-top: 1rem
+	.home-demo-dress-more
+		+media-breakpoint-up(md)
+			text-align: left
+			padding: 3.5rem 0rem
+
+// -----------------------------------------------------------
+// End love story
+
+// Contact
+// -----------------------------------------------------------
+
+.home-contact
+	background-color: #fffefd
+	.home-contact-title
+		@extend .home-title-total
+		+media-breakpoint-up(md)
+			margin-bottom: 3rem
+		+media-breakpoint-down(md)
+			margin-bottom: 2rem
+	.row
+		padding-bottom: 3rem
+		.home-contact-map
+			iframe
+				display: block
+				width: 100%
+.home-info-contact
+	+media-breakpoint-down(sm)
+		margin-top: 3rem
+		margin-bottom: 3rem
+	.home-contact-icon
+		display: flex
+		align-items: center
+		color: $pink-opacity
+		font-size: 1.2rem
+		margin-bottom: 1.4rem
+		i
+			font-size: 1.6rem
+			margin-right: 1rem
+		p
+			margin-bottom: 0rem
+	.home-contact-icon-map
+		align-items: flex-start
+		i
+			font-size: 1.9rem
+			margin-right: 1.1rem
+	.home-contact-btn
+		+media-breakpoint-down(sm)
+			text-align: center
+		button
+			font-size: 1.5rem
+			color: $pink-opacity
+			border: 2px solid $pink-opacity
+			background: none
+			padding: 0.8rem 2rem
+			margin-top: 1rem
+			&:focus
+				outline: none
+			&:hover
+				color: $white
+				background: $pink-opacity
+
+// -----------------------------------------------------------
+// End contact

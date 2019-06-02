@@ -80,6 +80,22 @@ $(document).ready(function () {
 
 	// Photoswipe
 	clickShown();
+
+	// Resize img of love story
+	resizeImage('.home-love-story .row a figure img', 0.65);
+
+	// Add animation for icon
+	addAnimation('.home-services-item figure img');
+
+	// Scroll to section
+	srollToSection('.catalog-item');
+
+	// Hover back to top
+	$('#back-to-top-id img').hover(function() {
+		$(this).addClass('heartBeat');
+	}, function() {
+		$(this).removeClass('heartBeat');
+	});
 });
 
 // Get url of image item
@@ -110,7 +126,7 @@ function openPhotoSwipe(index, disableAnimation, fromURL) {
 		bgOpacity: 0.9,
 		indexIndicatorSep: ' - ',
 		shareButtons: [
-			{id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u=url'},
+			{id:'facebook', label:'Share on Facebook', url:'https://www.facebook.com/sharer/sharer.php?u=https://hinhanhdephd.com/wp-content/uploads/2016/02/anh-girl-xinh-full-hd-lam-hinh-nen-laptop-13.jpg'},
 			{id:'twitter', label:'Tweet', url:'https://twitter.com/intent/tweet?text={{text}}&url={{url}}'},
 			{id:'pinterest', label:'Pin it', url:'http://www.pinterest.com/pin/create/button/?url={{url}}&media={{image_url}}&description={{text}}'},
 			{id:'download', label:'Download image', url:'{{raw_image_url}}', download:true}
@@ -131,7 +147,7 @@ function openPhotoSwipe(index, disableAnimation, fromURL) {
 				// is mouse click on image or zoom icon
 		
 				// zoom to original
-				return 1.5;
+				return 0.7;
 		
 				// e.g. for 1400px image:
 				// 0.5 - zooms to 700px
@@ -165,7 +181,7 @@ function openPhotoSwipe(index, disableAnimation, fromURL) {
 			// Good guide on how to get element coordinates:
 			// http://javascript.info/tutorial/coordinates
 		},
-		history: false,
+		history: true,
 		focus: false,
 		showAnimationDuration: 333,
 		hideAnimationDuration: 300
@@ -343,4 +359,40 @@ function showImageDevices() {
 			$(shownImg1).css('display', 'block');
 		}
 	}
+}
+
+// Add animation for icon
+function addAnimation(selector) {
+	let arrImg = $(selector);
+	arrImg.hover(function() {
+		let node = $(this);
+		node.addClass('magictime vanishOut');
+		setTimeout(function() {
+			node.removeClass('vanishOut');
+		}, 1000);
+	})
+}
+
+// Remove class
+function removeClassActived(selector, className) {
+	$(selector).each(function() {
+		if ($(this).hasClass(className)) {
+			$(this).removeClass(className);
+		}
+	});
+}
+
+// Sroll to each section
+function srollToSection(selector) {
+	$(selector).on('click', function () {
+		let target = $(this).attr('data-target');
+		let childNode = $(this).children();
+		removeClassActived(selector + ' a', 'actived-catalog');
+		$('html, body').animate({
+			scrollTop: $(target).offset().top
+		}, 500, function() {
+			window.location.hash = target;
+			$(childNode).addClass('actived-catalog');
+		});
+	});
 }

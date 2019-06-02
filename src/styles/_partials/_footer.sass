@@ -1,3 +1,49 @@
 footer
 	img 
 		max-width: 200px
+
+// Customize footer
+footer
+	font-size: 1.1rem
+	background-color: #e3e3e3
+	.footer-icon
+		+media-breakpoint-down(sm)
+			justify-content: center
+			padding: 1.5rem 0rem
+			margin: 0rem !important
+		font-size: 1.3rem
+		a
+			color: $white
+			display: flex
+			margin: 0rem 0.4rem
+			width: 30px
+			height: 30px
+			background-color: $pink-opacity
+			border-radius: 50%
+			align-items: center
+			justify-content: center
+		.icon-facebook
+			margin-left: 0rem
+		.icon-twitter
+			margin-right: 0rem
+	.footer-copyright
+		text-align: center
+		background-color: #d6d3d3
+		padding: 1rem 0rem
+	.form-email
+		border: 2px solid $pink-opacity
+		border-radius: 50px
+		background-color: $white
+		padding: 0.3rem 0.3rem
+		font-size: 1rem
+		.input-email
+			outline: none
+			border-radius: 50px 0px 0px 50px
+			border: none
+			padding: 0.4rem 0rem 0.4rem 1rem
+		.input-submit
+			padding: 0.4rem 1rem
+			border-radius: 50px
+			color: $white
+			background-color: $pink-opacity
+			border: none

@@ -59,6 +59,9 @@ mixin photoswipe()
 
 //- Phần khai báo body
 block body
+	//- Icon back to top
+	.back-to-top#back-to-top-id(data-wenk="Back to top !" data-wenk-pos="left")
+		img(src="./img/heart.png", alt="", height="35", width="35")
 	//- Bạn viết code vào đây nhớ là phải mở đầu bằng section ở mỗi khối
 	section.home-slider.home-slider-background
 		.container
@@ -75,7 +78,7 @@ block body
 							img(src="./img/invention.png", alt="")
 							figcaption
 	// Về chúng tôi
-	section.home-news.home-about-us-background
+	section.home-news.home-about-us-background#catalog-section-1
 		.container
 			.row.justify-content-center
 				.col-12#content-height
@@ -128,7 +131,7 @@ block body
 									i.fa.fa-star-o
 									p Từng tác nghiệp ở Úc, Nhật.
 	// Dịch vụ
-	section.home-clients.home-services-background
+	section.home-clients.home-services-background#catalog-section-2
 		.container
 			.row.justify-content-center
 				.col-12
@@ -142,7 +145,7 @@ block body
 						each value, index in arrServices
 							+services(value, arrUrl[index], index)
 	// Váy cưới
-	section.home-demo-dress
+	section.home-demo-dress#catalog-section-3
 		.container
 			.row.justify-content-center
 				.col-12
@@ -158,7 +161,7 @@ block body
 					.row
 						.col
 							#collapse-demo-dress-id-1.collapse-demo-dress.collapse.show
-								- const jsonList = [ 'https://daminhtan.com/images/Longka/Wedding/ROSA/mau-vay-cuoi-xuong-may-vay-cuoi-o-ha-noi-TRUN5289.jpg','http://static.giaoducthoidai.vn/uploaded/namnn/2015_12_04/14492164771449215078anh1_tpga.jpg?width=500','https://aphoto.vn/wp-content/uploads/2017/07/Chia-s%E1%BA%BB-stock-%E1%BA%A3nh-c%C3%B4-d%C3%A2u-%C4%91%C6%A1n-ch%E1%BB%A5p-ngo%E1%BA%A1i-c%E1%BA%A3nh-4.jpg', 'https://i.a4vn.com/2019/1/5/hau-trang-mat-a-hau-thanh-tu-khoe-bo-anh-co-dau-dep-mo-mang-821f0d.jpg','http://palatinostudio.com/editor/fileman/Uploads/tintuc/chup-anh-co-dau-don-than-palatino-studio-14.jpg','http://designlife.vn/wp-content/uploads/2015/09/tao-dang-co-dau-don-than.jpg','http://chupanhcuoidepsaigon.com/wp-content/uploads/2017/11/chup-hinh-cuoi-phim-truong-jeju-ngoai-canh-sai-gon-anh-cuoi-dep-luciola-thiet-ke-vay-cuoi-luciola-viet-nam1-729x1024.jpg','https://icdn.dantri.com.vn/thumb_w/640/2018/9/24/nha-phuong-1-15377850815281116830194.jpg','http://media.depplus.vn/images/site-1/20171125/web/ho-ngoc-ha-tung-anh-co-dau-xinh-dep-trong-ngay-sinh-nhat-236-141452.jpg','https://kenh14cdn.com/2017/do-long-3-1503115309477.jpg','http://team-image.com/wp-content/uploads/2017/12/bo-anh-co-dau-dep-team-image-thuc-hien-tai-tphcm-2-1.jpg','http://hajime.vn/pictures/chon-vay-cuoi-theo-cung-hoang-dao4.jpg' ]
+								- const jsonList = [ 'https://daminhtan.com/images/Longka/Wedding/ROSA/mau-vay-cuoi-xuong-may-vay-cuoi-o-ha-noi-TRUN5289.jpg','http://static.giaoducthoidai.vn/uploaded/namnn/2015_12_04/14492164771449215078anh1_tpga.jpg?width=500','https://aphoto.vn/wp-content/uploads/2017/07/Chia-s%E1%BA%BB-stock-%E1%BA%A3nh-c%C3%B4-d%C3%A2u-%C4%91%C6%A1n-ch%E1%BB%A5p-ngo%E1%BA%A1i-c%E1%BA%A3nh-4.jpg', 'https://i.a4vn.com/2019/1/5/hau-trang-mat-a-hau-thanh-tu-khoe-bo-anh-co-dau-dep-mo-mang-821f0d.jpg','http://palatinostudio.com/editor/fileman/Uploads/tintuc/chup-anh-co-dau-don-than-palatino-studio-14.jpg','http://designlife.vn/wp-content/uploads/2015/09/tao-dang-co-dau-don-than.jpg','http://chupanhcuoidepsaigon.com/wp-content/uploads/2017/11/chup-hinh-cuoi-phim-truong-jeju-ngoai-canh-sai-gon-anh-cuoi-dep-luciola-thiet-ke-vay-cuoi-luciola-viet-nam1-729x1024.jpg','https://icdn.dantri.com.vn/thumb_w/640/2018/9/24/nha-phuong-1-15377850815281116830194.jpg','https://aphoto.vn/wp-content/uploads/2017/07/Chia-s%E1%BA%BB-stock-%E1%BA%A3nh-c%C3%B4-d%C3%A2u-%C4%91%C6%A1n-ch%E1%BB%A5p-ngo%E1%BA%A1i-c%E1%BA%A3nh-6.jpg','https://kenh14cdn.com/2017/do-long-3-1503115309477.jpg','http://team-image.com/wp-content/uploads/2017/12/bo-anh-co-dau-dep-team-image-thuc-hien-tai-tphcm-2-1.jpg','http://hajime.vn/pictures/chon-vay-cuoi-theo-cung-hoang-dao4.jpg' ]
 								- const vestList = [ 'http://maiveston.com/wp-content/uploads/2018/06/maiveston.com-vest-nam-suit-004-dai-dien.jpg', 'https://bizweb.dktcdn.net/thumb/grande/100/023/876/files/vest-cuoi-dep-2.jpg?v=1475899219343', 'https://mayphuongthao.com/wp-content/uploads/2017/01/dong-phuc-vest-nam-0072.jpg', 'http://maiveston.com/wp-content/uploads/2018/06/maiveston.com-vest-nam-suit-004-dai-dien.jpg', 'http://www.vnmall.vn/Uploads/18/ThumbImages/700_22102016081032_0_ao-vest-nam-facioshop-zp05.jpg', 'https://media-cdn.tripadvisor.com/media/photo-s/0e/55/6a/b4/may-vest-d-p-ha-n-i.jpg', 'https://www.nazafu.com/images/thumbs/2018/03/ao-vest-den-1107-62-slide-products-5abdf7655c402.jpg', 'https://www.nazafu.com/images/thumbs/2018/03/ao-vest-xam-chuot-1103-61-slide-products-5abdf6fc5001c.jpg', 'https://product.hstatic.net/1000199383/product/bo-suit-nam-aristino-asu009w7_large.jpg', 'https://cdn.bigc24h.com/wp-content/uploads/sites/241/2019/01/sp_6.jpg', 'https://media.yoox.biz/items/49/49365770pj_14_f.jpg', 'https://media3.scdn.vn/img1/2016/8_13/ao-khoac-gia-vest-nam-slim-fit-co-dien-1m4G3-XhxxR4_simg_d0daf0_800x1200_max.jpg' ]
 								.row.justify-content-center
 									+demoWeddingDress(jsonList)
@@ -171,11 +174,11 @@ block body
 							#collapse-demo-dress-id-4.collapse-demo-dress.collapse
 								.row.justify-content-center
 									+demoWeddingDress(jsonList)
-					#see-more 
+					#see-more.home-demo-dress-more
 						a(href="./item1.html") Xem thêm
 	// Thư viện
-	section.home-library
-		.container-fluid
+	section.home-library#catalog-section-4
+		.container-fluid.home-library-img
 			.row.justify-content-center
 				.col-12
 					.home-library-title
@@ -183,6 +186,68 @@ block body
 						div
 							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
 					.row
-						- const arrImg = ['./img/photo-1.jpg', './img/couple-2.png','./img/couple-3.png','./img/couple-4.png','./img/couple-5.png','./img/couple-6.png','./img/couple-1.png','./img/couple-2.png','./img/couple-3.png','./img/couple-4.png','./img/couple-5.png','./img/couple-6.png']
+						- const arrImg = ['./img/FH9A0024.jpg', './img/FH9A0246.jpg','./img/FH9A1386.jpg','./img/IMG_3739.jpg','./img/IMG_4009.jpg','./img/IMG_4720.jpg','./img/IMG_6788.jpg','./img/IMG_6987.jpg','./img/IMG_7011.jpg','./img/IMG_7069.jpg','./img/IMG_7099.jpg','./img/IMG_8778.jpg']
 						+showImgLibrary(arrImg)
+					#see-more.home-demo-dress-more
+						a(href="#") Xem thêm
 	+photoswipe()
+	// Câu chuyện tình yêu
+	section.home-love-story#catalog-section-5
+		.container
+			.row
+				.col-12
+					.home-love-story-title
+						h3.home-about-us-title Câu chuyện tình yêu
+						div
+							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
+					.row.justify-content-center
+						.col-9.col-sm-9.col-md-4.col-lg-4.home-story-blog
+							a(href="#")
+								figure
+									img(src="./img/FH9A0246.jpg", alt="image blog 1")
+								h4 By spite about do of do allow blush
+								.home-story-content Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat
+								p Hồ Chí Minh, ngày 17/05/2019
+						.col-9.col-sm-9.col-md-4.col-lg-4.home-story-blog
+							a(href="#")
+								figure
+									img(src="./img/IMG_6987.jpg", alt="image blog 1")
+								h4 By spite about do of do allow blush
+								.home-story-content Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat
+								p Hồ Chí Minh, ngày 17/05/2019
+						.col-9.col-sm-9.col-md-4.col-lg-4.home-story-blog
+							a(href="#")
+								figure
+									img(src="./img/FH9A0024.jpg", alt="image blog 1")
+								h4 By spite about do of do allow blush
+								.home-story-content Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat
+								p Hồ Chí Minh, ngày 17/05/2019
+					#see-blog.home-demo-dress-more
+						a(href="#") Xem blog
+	// Liên hệ
+	section.home-contact#catalog-section-6
+		.container
+			.row.justify-content-center
+				.col-12
+					.home-contact-title
+						h3.home-about-us-title Liên hệ
+						div
+							img(src="./img/flower-line.png", alt="" class="home-about-us-img-title")
+					.row.justify-content-center
+						.col-12.col-sm-12.col-md-7.col-lg-7.home-contact-map
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.398483866508!2d106.72759587972352!3d10.844826701095814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527d905b818d9%3A0x2301f033189c1857!2zMjE0IMSQxrDhu51uZyBIaeG7h3AgQsOsbmgsIEhp4buHcCBCw6xuaCBDaMOhbmgsIFRo4bunIMSQ4bupYywgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1559379499992!5m2!1sen!2s" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+						.col-10.col-sm-9.col-md-5.col-lg-5.home-info-contact
+							div.home-contact-icon.home-contact-icon-map
+								i.fa.fa-map-marker
+								p 214 Hiệp Bình, Hiệp Bình Chánh, Thủ Đức, TP. Hồ Chí Minh
+							div.home-contact-icon
+								i.fa.fa-envelope
+								p thonnps07668@fpt.edu.vn
+							div.home-contact-icon
+								i.fa.fa-phone
+								p (+84) 9615 44404
+							div.home-contact-icon
+								i.fa.fa-facebook-square
+								p Rosy Studio
+							.home-contact-btn 
+								button Liên hệ ngay
