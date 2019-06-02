@@ -96,6 +96,9 @@ $(document).ready(function () {
 	}, function() {
 		$(this).removeClass('heartBeat');
 	});
+
+	// Back to top
+	backToTop('#back-to-top-id');
 });
 
 // Get url of image item
@@ -394,5 +397,22 @@ function srollToSection(selector) {
 			window.location.hash = target;
 			$(childNode).addClass('actived-catalog');
 		});
+	});
+}
+
+// Back to top
+function backToTop(selector) {
+	$(selector).on('click', function() {
+		$('html, body').animate({
+			scrollTop: 0
+		}, 1000);
+	});
+	$(window).scroll(function() {
+		let pos = $(window).scrollTop();
+		if (pos > 400) {
+			$(selector).css('display', 'block');
+		} else {
+			$(selector).css('display', 'none');
+		}
 	});
 }
