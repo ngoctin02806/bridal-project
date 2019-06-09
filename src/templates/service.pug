@@ -1,0 +1,109 @@
+extends _layout/layout_02
+
+block variables
+	- var title = 'Service'
+	- var description = 'Description for about page'
+	- var bodyclass = 'service'
+
+block body
+	section.service-banner
+		.container
+			.swiper-container
+				.swiper-wrapper
+					.swiper-slide
+						img.img-fluid(src="./img/service_banner.png", alt="", srcset="")
+					.swiper-slide
+						img.img-fluid(src="./img/service_banner.png", alt="", srcset="")
+					.swiper-slide
+						img.img-fluid(src="./img/service_banner.png", alt="", srcset="")
+				// Add Pagination
+				.swiper-pagination
+	section.service-content
+		.container
+			.text-content
+				h2 Váy cưới nổi bậc
+				div
+					img(src="./img/flower-line.png", alt="")
+			.content
+				.row
+					.col-12.col-sm-6.col-lg-3
+						.tab-content
+							.img-content
+								img.img-fluid(src="./img/service_img_01.png", alt="", srcset="")
+								.detail
+									button.btn.btn-outline-danger(type="submit") Xem Chi Tiết
+							.text-img
+								p.title lowdin glusen
+								p 3.000.000 vnd
+					.col-12.col-sm-6.col-lg-3
+						.tab-content
+							.img-content
+								img.img-fluid(src="./img/service_img_02.png", alt="", srcset="")
+								.detail
+									button.btn.btn-outline-danger(type="submit") Xem Chi Tiết
+							.text-img
+								p.title lowdin glusen
+								p 3.000.000 vnd
+					.col-12.col-sm-6.col-lg-3
+						.tab-content
+							.img-content
+								img.img-fluid(src="./img/service_img_03.png", alt="", srcset="")
+								.detail
+									button.btn.btn-outline-danger(type="submit") Xem Chi Tiết
+							.text-img
+								p.title lowdin glusen
+								p 3.000.000 vnd
+					.col-12.col-sm-6.col-lg-3
+						.tab-content
+							.img-content
+								img.img-fluid(src="./img/service_img_04.png", alt="", srcset="")
+								.sale
+									.img-sale
+										img.img-fluid(src="./img/service_sale.png", alt="", srcset="")
+								.detail
+									button.btn.btn-outline-danger(type="submit") Xem Chi Tiết
+							.text-img
+								p.title lowdin glusen
+								p 3.000.000 vnd
+				.row
+					.col-12.col-sm-6.col-lg-3
+						.tab-content
+							.img-content
+								img.img-fluid(src="./img/service_img_04.png", alt="", srcset="")
+								.detail
+									button.btn.btn-outline-danger(type="submit") Xem Chi Tiết
+							.text-img
+								p.title lowdin glusen
+								p 3.000.000 vnd
+					.col-12.col-sm-6.col-lg-3
+						.tab-content
+							.img-content
+								img.img-fluid(src="./img/service_img_03.png", alt="", srcset="")
+								.detail
+									button.btn.btn-outline-danger(type="submit") Xem Chi Tiết
+							.text-img
+								p.title lowdin glusen
+								p 3.000.000 vnd
+					.col-12.col-sm-6.col-lg-3
+						.tab-content
+							.img-content
+								img.img-fluid(src="./img/service_img_02.png", alt="", srcset="")
+								.detail
+									button.btn.btn-outline-danger(type="submit") Xem Chi Tiết
+							.text-img
+								p.title lowdin glusen
+								p 3.000.000 vnd
+					.col-12.col-sm-6.col-lg-3
+						.tab-content
+							.img-content
+								img.img-fluid(src="./img/service_img_01.png", alt="", srcset="")
+								.sale
+									.img-sale
+										img.img-fluid(src="./img/service_sale.png", alt="", srcset="")
+								.detail
+									button.btn.btn-outline-danger(type="submit") Xem Chi Tiết
+							.text-img
+								p.title lowdin glusen
+								p 3.000.000 vnd
+			.content-next
+				a(href="#") Xem thêm

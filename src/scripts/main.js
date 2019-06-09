@@ -48,3 +48,13 @@ $(document).ready(function () {
 	divElement.html(listItem); // Insert html of list into div element
 });
 
+
+$(document).ready(function () {
+    //initialize swiper when document ready
+    var swiper = new Swiper('.swiper-container', {
+		pagination: {
+		  el: '.swiper-pagination',
+		},
+	  });
+  });
+

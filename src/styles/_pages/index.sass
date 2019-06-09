@@ -336,3 +336,82 @@
 //-------------------------
 
 //-------------------------
+
+//-----contenct (VÁY CƯỚI NỔI BẬC)
+.service-content
+	padding: 2rem 0rem
+	.text-content
+		text-align: center
+		text-transform: uppercase
+	.content-next
+		text-align: center
+		font-size: 1.5rem
+		a
+			color: #d77c7c
+	.content
+		padding: 2rem 0rem
+		.tab-content
+			text-align: center
+			.img-content
+				position: relative
+				padding: 1.25rem 0rem
+				display: flex
+				justify-content: center
+				align-items: center
+				z-index: 0
+				.sale
+					z-index: 1
+					.img-sale
+						right: 6rem
+						top: 2.25rem
+						position: absolute
+				.detail
+					z-index: 1
+					opacity: 0
+					button
+						position: absolute
+						font-weight: bold
+						bottom: 2rem
+						left: 6rem
+			.text-img
+				text-transform: uppercase
+				.title
+					display: inline-block
+					font-size: 1.5rem
+					border-bottom: 2px solid #fff
+			&:hover
+				.text-img
+					.title
+						border-bottom: 2px solid #d77c7c
+						transition: all 1s ease-in-out
+				.img-content
+					.detail
+						opacity: 1
+						transition: all 1s ease-in-out				
+		+media-breakpoint-between(sm, lg)
+			.img-content
+				.sale
+					.img-sale
+						right: 1rem !important
+				.detail
+					button
+						left: 1rem !important
+		+media-breakpoint-up(md)
+			.img-content
+				.sale
+					.img-sale
+						right: 2rem !important
+				.detail
+					button
+						left: 2rem !important
+		+media-breakpoint-up(lg)
+			.text-img
+				p
+					float: left
+			.img-content
+				.sale
+					.img-sale
+						right: 1rem !important
+				.detail
+					button
+						left: 1rem !important

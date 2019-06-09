@@ -1,0 +1,28 @@
+header.bg-light.header-customize.header_02
+	#header-normal.container
+		nav.navbar.navbar-expand-lg.p-0
+			//- a.navbar-brand(href="#") 
+			//- 	img(src="./img/logo.png", alt="Logo")
+			//- Đây là nút sẽ hiển thị trong mobile
+			button.navbar-toggler(type="button" data-toggle="collapse" data-target="#header" aria-controls="header" aria-expanded="false" aria-label="Toggle navigation")
+				span.fa.fa-bars
+			#header.collapse.navbar-collapse
+				//- Thuộc tính '.mr-auto' này sẽ đẩy me nu về bên phải 
+				ul.navbar-nav.header-customize-padding
+					li.nav-item.active.header-custimize-li
+						a.nav-link(href="#")
+							| Áo cưới
+					li.nav-item.header-custimize-li
+						a.nav-link(href="#") Áo vest
+					li.nav-item.header-custimize-li
+						a.nav-link(href="#") Áo phụ dâu
+					li.nav-item.header-custimize-li.logo
+						a.nav-link(href="index.pug")
+							img.img-fluid(src="./img/LOGOROSY_02.png", alt="Logo")
+					li.nav-item.header-custimize-li
+						a.nav-link(href="#" ) Áo phụ kiện
+					li.nav-item.header-custimize-li
+						a.nav-link(href="#" ) Sản phẩm bán
+					li.nav-item.header-custimize-li
+						a.nav-link(href="#" ) Khác
+	#header-mobile

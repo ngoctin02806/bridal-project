@@ -1,7 +1,7 @@
 <!-- ////////////// HEADER ////////////// -->
 header.bg-light.header-customize
 	#header-normal.container
-		nav.navbar.navbar-expand-lg.navbar-light
+		nav.navbar.navbar-expand-lg
 			a.navbar-brand(href="#") 
 				img(src="./img/logo.png", alt="Logo")
 			//- Đây là nút sẽ hiển thị trong mobile
@@ -18,6 +18,6 @@ header.bg-light.header-customize
 					- const catalog = ['Giới thiệu', 'Dịch vụ', 'Liên hệ', 'Story love', 'Bộ sưu tập', 'Thư viện']
 						each item in catalog
 							li.nav-item
-								a.nav-link(href="#")= item
+								a.nav-link(href="service.html")= item
 	#header-mobile
 <!-- ////////////// HEADER ////////////// -->
