@@ -1,5 +1,16 @@
 extends _layout/layout
 
 block body
-	.main
-		include ./_layout/detailHeader
+	section
+		.container
+			include ./_layout/detailHeader
+			.row
+				.col-12.col-sm-12.col-md-6.col-lg-6
+					nav(aria-label='breadcrumb')
+						ol.breadcrumb
+							li.breadcrumb-item
+								a(href='#') Home
+							li.breadcrumb-item
+								a(href='#') Library
+							li.breadcrumb-item.active(aria-current='page') Data
+				.col-12.col-sm-12.col-md-6.col-lg-6
